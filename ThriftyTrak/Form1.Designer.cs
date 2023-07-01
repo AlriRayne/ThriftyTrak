@@ -28,132 +28,166 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.labelUsername = new System.Windows.Forms.Label();
-            this.btnDash = new System.Windows.Forms.Button();
-            this.btnDonate = new System.Windows.Forms.Button();
-            this.btnSales = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnLogout = new System.Windows.Forms.Button();
-            this.lblBanner = new System.Windows.Forms.Label();
+            this.txtBoxName = new System.Windows.Forms.TextBox();
+            this.txtBoxCategory = new System.Windows.Forms.TextBox();
+            this.txtBoxType = new System.Windows.Forms.TextBox();
+            this.txtBoxDescription = new System.Windows.Forms.TextBox();
+            this.txtBoxCondition = new System.Windows.Forms.TextBox();
+            this.txtBoxAskingPrice = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtBoxPurchasePrice = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // lblTitle
+            // txtBoxName
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(51, 13);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(58, 13);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "ThriftyTrak";
+            this.txtBoxName.Location = new System.Drawing.Point(151, 60);
+            this.txtBoxName.Name = "txtBoxName";
+            this.txtBoxName.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxName.TabIndex = 0;
             // 
-            // labelUsername
+            // txtBoxCategory
             // 
-            this.labelUsername.AutoSize = true;
-            this.labelUsername.Location = new System.Drawing.Point(710, 13);
-            this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(85, 13);
-            this.labelUsername.TabIndex = 1;
-            this.labelUsername.Text = "Hello, Username";
+            this.txtBoxCategory.Location = new System.Drawing.Point(151, 108);
+            this.txtBoxCategory.Name = "txtBoxCategory";
+            this.txtBoxCategory.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxCategory.TabIndex = 1;
             // 
-            // btnDash
+            // txtBoxType
             // 
-            this.btnDash.Location = new System.Drawing.Point(12, 71);
-            this.btnDash.Name = "btnDash";
-            this.btnDash.Size = new System.Drawing.Size(75, 23);
-            this.btnDash.TabIndex = 2;
-            this.btnDash.Text = "Dashboard";
-            this.btnDash.UseVisualStyleBackColor = true;
-            this.btnDash.Click += new System.EventHandler(this.btnDash_Click);
+            this.txtBoxType.Location = new System.Drawing.Point(151, 154);
+            this.txtBoxType.Name = "txtBoxType";
+            this.txtBoxType.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxType.TabIndex = 2;
             // 
-            // btnDonate
+            // txtBoxDescription
             // 
-            this.btnDonate.Location = new System.Drawing.Point(12, 100);
-            this.btnDonate.Name = "btnDonate";
-            this.btnDonate.Size = new System.Drawing.Size(75, 23);
-            this.btnDonate.TabIndex = 3;
-            this.btnDonate.Text = "Donations";
-            this.btnDonate.UseVisualStyleBackColor = true;
-            this.btnDonate.Click += new System.EventHandler(this.btnDonate_Click);
+            this.txtBoxDescription.Location = new System.Drawing.Point(151, 199);
+            this.txtBoxDescription.Name = "txtBoxDescription";
+            this.txtBoxDescription.Size = new System.Drawing.Size(300, 20);
+            this.txtBoxDescription.TabIndex = 3;
             // 
-            // btnSales
+            // txtBoxCondition
             // 
-            this.btnSales.Location = new System.Drawing.Point(12, 130);
-            this.btnSales.Name = "btnSales";
-            this.btnSales.Size = new System.Drawing.Size(75, 23);
-            this.btnSales.TabIndex = 4;
-            this.btnSales.Text = "Sales";
-            this.btnSales.UseVisualStyleBackColor = true;
-            this.btnSales.Click += new System.EventHandler(this.btnSales_Click);
+            this.txtBoxCondition.Location = new System.Drawing.Point(151, 246);
+            this.txtBoxCondition.Name = "txtBoxCondition";
+            this.txtBoxCondition.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxCondition.TabIndex = 4;
             // 
-            // btnAdd
+            // txtBoxAskingPrice
             // 
-            this.btnAdd.Location = new System.Drawing.Point(12, 160);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 5;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.txtBoxAskingPrice.Location = new System.Drawing.Point(151, 300);
+            this.txtBoxAskingPrice.Name = "txtBoxAskingPrice";
+            this.txtBoxAskingPrice.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxAskingPrice.TabIndex = 5;
             // 
-            // btnEdit
+            // label1
             // 
-            this.btnEdit.Location = new System.Drawing.Point(12, 190);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnEdit.TabIndex = 6;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 60);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Item Name:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // btnSearch
+            // label2
             // 
-            this.btnSearch.Location = new System.Drawing.Point(12, 220);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 7;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(22, 115);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(52, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Category:";
             // 
-            // btnLogout
+            // label3
             // 
-            this.btnLogout.Location = new System.Drawing.Point(12, 250);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(75, 23);
-            this.btnLogout.TabIndex = 8;
-            this.btnLogout.Text = "Log Out";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(22, 161);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(34, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Type:";
             // 
-            // lblBanner
+            // label4
             // 
-            this.lblBanner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.lblBanner.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblBanner.Location = new System.Drawing.Point(93, 71);
-            this.lblBanner.Name = "lblBanner";
-            this.lblBanner.Size = new System.Drawing.Size(695, 23);
-            this.lblBanner.TabIndex = 9;
-            this.lblBanner.Text = "Welcome!";
-            this.lblBanner.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(22, 206);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(60, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Description";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(22, 253);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Condition:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(22, 307);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(69, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Asking Price:";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(151, 414);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Add";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(22, 363);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(82, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Purchase Price:";
+            // 
+            // txtBoxPurchasePrice
+            // 
+            this.txtBoxPurchasePrice.Location = new System.Drawing.Point(151, 356);
+            this.txtBoxPurchasePrice.Name = "txtBoxPurchasePrice";
+            this.txtBoxPurchasePrice.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxPurchasePrice.TabIndex = 13;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.lblBanner);
-            this.Controls.Add(this.btnLogout);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnSales);
-            this.Controls.Add(this.btnDonate);
-            this.Controls.Add(this.btnDash);
-            this.Controls.Add(this.labelUsername);
-            this.Controls.Add(this.lblTitle);
+            this.ClientSize = new System.Drawing.Size(463, 461);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtBoxPurchasePrice);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtBoxAskingPrice);
+            this.Controls.Add(this.txtBoxCondition);
+            this.Controls.Add(this.txtBoxDescription);
+            this.Controls.Add(this.txtBoxType);
+            this.Controls.Add(this.txtBoxCategory);
+            this.Controls.Add(this.txtBoxName);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -163,16 +197,20 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label labelUsername;
-        private System.Windows.Forms.Button btnDash;
-        private System.Windows.Forms.Button btnDonate;
-        private System.Windows.Forms.Button btnSales;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Label lblBanner;
+        private System.Windows.Forms.TextBox txtBoxName;
+        private System.Windows.Forms.TextBox txtBoxCategory;
+        private System.Windows.Forms.TextBox txtBoxType;
+        private System.Windows.Forms.TextBox txtBoxDescription;
+        private System.Windows.Forms.TextBox txtBoxCondition;
+        private System.Windows.Forms.TextBox txtBoxAskingPrice;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtBoxPurchasePrice;
     }
 }
-
