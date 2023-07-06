@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace ThriftyTrak
 {
@@ -109,7 +110,55 @@ namespace ThriftyTrak
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (listBox1.SelectedItem == null)
+            {
+                MessageBox.Show("Please select an item to edit from the inventory");
+                return;
+            }
 
+            string item = listBox1.SelectedItem.ToString();
+            string digits = new string(item.TakeWhile(Char.IsDigit).ToArray());
+            int itemId = Convert.ToInt32(digits);
+            string id = "";
+            string name = "";
+            string category = "";
+            string type = "";
+            string description = "";
+            string condition = "";
+            string asking = "";
+            string purchased = "";
+
+            // get the selected item from inventory
+            try
+            {
+                string connStr = "Server=localhost; Database=ThriftyTrak; Integrated Security=True";
+                string query = "SELECT * FROM Inventory WHERE ITEM_ID = " + itemId;
+                SqlConnection conn = new SqlConnection(connStr);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = reader["ITEM_ID"].ToString();
+                    name = reader["ITEM_NAME"].ToString();
+                    category = reader["ITEM_CATEGORY"].ToString();
+                    type = reader["ITEM_TYPE"].ToString();
+                    description = reader["ITEM_DESCRIPTION"].ToString();
+                    condition = reader["ITEM_Condition"].ToString();
+                    asking = reader["ITEM_ASKING_PRICE"].ToString();
+                    purchased = reader["ITEM_PURCHASE_PRICE"].ToString();
+
+                    break;
+                }
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            Form2 edit = new Form2("Inventory", int.Parse(id), name, category, type, description, condition, asking, purchased);
+            edit.Show();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -272,6 +321,59 @@ namespace ThriftyTrak
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void btnEditSale_Click(object sender, EventArgs e)
+        {
+            if (listBox2.SelectedItem == null)
+            {
+                MessageBox.Show("Please select an item to edit from the sales history");
+                return;
+            }
+
+            string item = listBox2.SelectedItem.ToString();
+            string digits = new string(item.TakeWhile(Char.IsDigit).ToArray());
+            int itemId = Convert.ToInt32(digits);
+            string id = "";
+            string name = "";
+            string category = "";
+            string type = "";
+            string description = "";
+            string condition = "";
+            string selling = "";
+            string purchased = "";
+
+            // get the selected item from sales history
+            try
+            {
+                string connStr = "Server=localhost; Database=ThriftyTrak; Integrated Security=True";
+                string query = "SELECT * FROM Sold WHERE ITEM_ID = " + itemId;
+                SqlConnection conn = new SqlConnection(connStr);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = reader["ITEM_ID"].ToString();
+                    name = reader["ITEM_NAME"].ToString();
+                    category = reader["ITEM_CATEGORY"].ToString();
+                    type = reader["ITEM_TYPE"].ToString();
+                    description = reader["ITEM_DESCRIPTION"].ToString();
+                    condition = reader["ITEM_CONDITION"].ToString();
+                    selling = reader["ITEM_SELLING_PRICE"].ToString();
+                    purchased = reader["ITEM_PURCHASE_PRICE"].ToString();
+
+                    break;
+                }
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            Form2 edit = new Form2("Sold", int.Parse(id), name, category, type, description, condition, selling, purchased);
+            edit.Show();
         }
     }
 }

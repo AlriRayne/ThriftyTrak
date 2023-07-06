@@ -172,7 +172,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(463, 461);
+            this.ClientSize = new System.Drawing.Size(470, 490);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtBoxPurchasePrice);
             this.Controls.Add(this.button1);
@@ -189,7 +189,7 @@
             this.Controls.Add(this.txtBoxCategory);
             this.Controls.Add(this.txtBoxName);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Add to Inventory";
             this.ResumeLayout(false);
             this.PerformLayout();
 

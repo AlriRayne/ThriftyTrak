@@ -43,6 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSellItem = new System.Windows.Forms.Button();
+            this.btnEditSale = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -109,13 +110,13 @@
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 6;
-            this.btnEdit.Text = "Edit";
+            this.btnEdit.Text = "Edit Item";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(12, 248);
+            this.btnSearch.Location = new System.Drawing.Point(12, 276);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 7;
@@ -125,7 +126,7 @@
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(12, 278);
+            this.btnLogout.Location = new System.Drawing.Point(12, 306);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(75, 23);
             this.btnLogout.TabIndex = 8;
@@ -188,11 +189,22 @@
             this.btnSellItem.UseVisualStyleBackColor = true;
             this.btnSellItem.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnEditSale
+            // 
+            this.btnEditSale.Location = new System.Drawing.Point(12, 247);
+            this.btnEditSale.Name = "btnEditSale";
+            this.btnEditSale.Size = new System.Drawing.Size(75, 23);
+            this.btnEditSale.TabIndex = 15;
+            this.btnEditSale.Text = "Edit Sale";
+            this.btnEditSale.UseVisualStyleBackColor = true;
+            this.btnEditSale.Click += new System.EventHandler(this.btnEditSale_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1149, 533);
+            this.Controls.Add(this.btnEditSale);
             this.Controls.Add(this.btnSellItem);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -232,6 +244,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSellItem;
+        private System.Windows.Forms.Button btnEditSale;
     }
 }
 
