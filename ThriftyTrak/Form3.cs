@@ -12,12 +12,12 @@ using System.Xml.Linq;
 
 namespace ThriftyTrak
 {
-    public partial class Form2 : Form
+    public partial class Form3 : Form
     {
         int id;
         string table;
 
-        public Form2(string table, int id, string name, string category, string type, string description, string condition, string asking, string purchased)
+        public Form3(string table, int id, string name, string category, string type, string description, string condition, string selling, string purchased)
         {
             InitializeComponent();
 
@@ -33,7 +33,7 @@ namespace ThriftyTrak
             txtBoxType.Text = type;
             txtBoxDescription.Text = description;
             txtBoxCondition.Text = condition;
-            txtBoxAskingPrice.Text = asking;
+            txtBoxSellingPrice.Text = selling;
             txtBoxPurchasePrice.Text = purchased;
 
             txtBoxNewName.Text = name;
@@ -41,7 +41,7 @@ namespace ThriftyTrak
             txtBoxNewType.Text = type;
             txtBoxNewDescription.Text = description;
             txtBoxNewCondition.Text = condition;
-            txtBoxNewAskingPrice.Text = asking;
+            txtBoxNewSellingPrice.Text = selling;
             txtBoxNewPurchasePrice.Text = purchased;
         }
 
@@ -57,12 +57,12 @@ namespace ThriftyTrak
                 string type = txtBoxNewType.Text.ToString();
                 string description = txtBoxNewDescription.Text.ToString();
                 string condition = txtBoxNewCondition.Text.ToString();
-                double askingPrice = Double.Parse(txtBoxNewAskingPrice.Text);
+                double sellingPrice = Double.Parse(txtBoxNewSellingPrice.Text);
                 double purchasePrice = Double.Parse(txtBoxNewPurchasePrice.Text);
 
-                string update = "UPDATE " + table + " SET ITEM_NAME = '" + name + "', ITEM_CATEGORY = '" + 
+                string update = "UPDATE " + table + " SET ITEM_NAME = '" + name + "', ITEM_CATEGORY = '" +
                     category + "', ITEM_TYPE = '" + type + "', ITEM_DESCRIPTION = '" + description +
-                    "', ITEM_CONDITION = '" + condition + "', ITEM_ASKING_PRICE = " + askingPrice + 
+                    "', ITEM_CONDITION = '" + condition + "', ITEM_SELLING_PRICE = " + sellingPrice +
                     ", ITEM_PURCHASE_PRICE = " + purchasePrice + ", ITEM_TIMESTAMP = '" + DateNow + "'" +
                     "WHERE ITEM_ID = " + id;
 
@@ -82,5 +82,6 @@ namespace ThriftyTrak
         {
 
         }
+
     }
 }

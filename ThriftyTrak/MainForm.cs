@@ -372,7 +372,7 @@ namespace ThriftyTrak
             {
                 MessageBox.Show(ex.Message);
             }
-            Form2 edit = new Form2("Sold", int.Parse(id), name, category, type, description, condition, selling, purchased);
+            Form3 edit = new Form3("Sold", int.Parse(id), name, category, type, description, condition, selling, purchased);
             edit.Show();
         }
     }
