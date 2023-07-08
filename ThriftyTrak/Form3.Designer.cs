@@ -57,6 +57,7 @@
             this.txtBoxType = new System.Windows.Forms.TextBox();
             this.txtBoxCategory = new System.Windows.Forms.TextBox();
             this.txtBoxName = new System.Windows.Forms.TextBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label8
@@ -81,7 +82,7 @@
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(100, 23);
             this.btnEdit.TabIndex = 71;
-            this.btnEdit.Text = "Edit";
+            this.btnEdit.Text = "Submit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -300,11 +301,22 @@
             this.txtBoxName.Size = new System.Drawing.Size(100, 20);
             this.txtBoxName.TabIndex = 45;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(777, 402);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(100, 23);
+            this.btnCancel.TabIndex = 74;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(979, 450);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtBoxNewPurchasePrice);
             this.Controls.Add(this.btnEdit);
@@ -334,6 +346,8 @@
             this.Controls.Add(this.txtBoxType);
             this.Controls.Add(this.txtBoxCategory);
             this.Controls.Add(this.txtBoxName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "Form3";
             this.Text = "Edit Sale";
             this.ResumeLayout(false);
@@ -372,5 +386,6 @@
         private System.Windows.Forms.TextBox txtBoxType;
         private System.Windows.Forms.TextBox txtBoxCategory;
         private System.Windows.Forms.TextBox txtBoxName;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

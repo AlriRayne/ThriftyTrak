@@ -51,7 +51,7 @@ namespace ThriftyTrak
             {
                 string connStr = "Server=localhost; Database=ThriftyTrak; Integrated Security=True";
                 DateTime todayDate = DateTime.Now;
-                string DateNow = todayDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
+                string DateNow = todayDate.ToString("yyyy-MM-dd HH:mm:ss");
                 string name = txtBoxNewName.Text.ToString();
                 string category = txtBoxNewCategory.Text.ToString();
                 string type = txtBoxNewType.Text.ToString();
@@ -83,5 +83,9 @@ namespace ThriftyTrak
 
         }
 
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

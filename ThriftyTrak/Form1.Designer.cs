@@ -43,6 +43,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.txtBoxPurchasePrice = new System.Windows.Forms.TextBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtBoxName
@@ -168,11 +169,22 @@
             this.txtBoxPurchasePrice.Size = new System.Drawing.Size(100, 20);
             this.txtBoxPurchasePrice.TabIndex = 13;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(278, 414);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(100, 23);
+            this.btnCancel.TabIndex = 75;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(470, 490);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtBoxPurchasePrice);
             this.Controls.Add(this.button1);
@@ -188,6 +200,8 @@
             this.Controls.Add(this.txtBoxType);
             this.Controls.Add(this.txtBoxCategory);
             this.Controls.Add(this.txtBoxName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Add to Inventory";
             this.ResumeLayout(false);
@@ -212,5 +226,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtBoxPurchasePrice;
+        private System.Windows.Forms.Button btnCancel;
     }
 }
