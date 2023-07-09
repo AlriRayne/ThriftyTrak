@@ -76,6 +76,7 @@ namespace ThriftyTrak
             {
                 MessageBox.Show(ex.Message);
             }
+            this.Close();
         }
 
         private void txtboxNewAskingPrice_TextChanged(object sender, EventArgs e)
