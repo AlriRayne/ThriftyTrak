@@ -45,6 +45,7 @@
             this.btnSales = new System.Windows.Forms.Button();
             this.btnDonate = new System.Windows.Forms.Button();
             this.labelUsername = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             // 
             this.tableLabel.AutoSize = true;
             this.tableLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.tableLabel.Location = new System.Drawing.Point(161, 185);
+            this.tableLabel.Location = new System.Drawing.Point(161, 191);
             this.tableLabel.Name = "tableLabel";
             this.tableLabel.Size = new System.Drawing.Size(136, 21);
             this.tableLabel.TabIndex = 28;
@@ -62,6 +63,9 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -74,12 +78,12 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(164, 216);
+            this.dataGridView1.Location = new System.Drawing.Point(161, 228);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(968, 427);
+            this.dataGridView1.Size = new System.Drawing.Size(1078, 539);
             this.dataGridView1.TabIndex = 32;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -103,12 +107,14 @@
             // 
             // lblBanner
             // 
+            this.lblBanner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblBanner.BackColor = System.Drawing.Color.Gray;
             this.lblBanner.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBanner.ForeColor = System.Drawing.Color.White;
-            this.lblBanner.Location = new System.Drawing.Point(166, 105);
+            this.lblBanner.Location = new System.Drawing.Point(161, 105);
             this.lblBanner.Name = "lblBanner";
-            this.lblBanner.Size = new System.Drawing.Size(966, 60);
+            this.lblBanner.Size = new System.Drawing.Size(1078, 80);
             this.lblBanner.TabIndex = 35;
             this.lblBanner.Text = "Welcome!";
             this.lblBanner.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -235,19 +241,32 @@
             // 
             // labelUsername
             // 
+            this.labelUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelUsername.AutoSize = true;
             this.labelUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUsername.Location = new System.Drawing.Point(1003, 25);
+            this.labelUsername.Location = new System.Drawing.Point(1570, 25);
             this.labelUsername.Name = "labelUsername";
             this.labelUsername.Size = new System.Drawing.Size(129, 21);
             this.labelUsername.TabIndex = 45;
             this.labelUsername.Text = "Hello, Username!";
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1110, 38);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(129, 21);
+            this.label1.TabIndex = 46;
+            this.label1.Text = "Hello, Username!";
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1143, 661);
+            this.ClientSize = new System.Drawing.Size(1251, 792);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.labelUsername);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSell);
@@ -288,5 +307,6 @@
         private System.Windows.Forms.Button btnSales;
         private System.Windows.Forms.Button btnDonate;
         private System.Windows.Forms.Label labelUsername;
+        private System.Windows.Forms.Label label1;
     }
 }
