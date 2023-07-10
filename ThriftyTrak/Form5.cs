@@ -434,5 +434,10 @@ namespace ThriftyTrak
                 "ITEM_ASKING_PRICE AS 'Asking Price', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                 "ITEM_TIMESTAMP AS Date FROM Inventory");
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
