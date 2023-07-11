@@ -14,12 +14,16 @@ namespace ThriftyTrak
 {
     public partial class Form3 : Form
     {
-        int id;
-        string table;
+        private int id;
+        private string table, userName, password, connStr;
 
-        public Form3(string table, int id, string name, string category, string type, string description, string condition, string selling, string purchased)
+        public Form3(string table, int id, string name, string category, string type, string description, string condition, string selling, string purchased, string userName, string password)
         {
             InitializeComponent();
+
+            this.userName = userName;
+            this.password = password;
+            connStr = "Server=localhost; Database=ThriftyTrak; User Id=" + userName + "; Password=" + password;
 
             // set item id for reference and choose table
 
@@ -49,14 +53,15 @@ namespace ThriftyTrak
         {
             try
             {
-                string connStr = "Server=localhost; Database=ThriftyTrak; Integrated Security=True";
                 DateTime todayDate = DateTime.Now;
                 string DateNow = todayDate.ToString("yyyy-MM-dd HH:mm:ss");
-                string name = txtBoxNewName.Text.ToString();
-                string category = txtBoxNewCategory.Text.ToString();
-                string type = txtBoxNewType.Text.ToString();
-                string description = txtBoxNewDescription.Text.ToString();
-                string condition = txtBoxNewCondition.Text.ToString();
+
+                // make sure to add an escape character to any 's
+                String name = txtBoxName.Text.ToString().Replace("'", "''");
+                String category = txtBoxCategory.Text.ToString().Replace("'", "''"); ;
+                String type = txtBoxType.Text.ToString().Replace("'", "''"); ;
+                String description = txtBoxDescription.Text.ToString().Replace("'", "''"); ;
+                String condition = txtBoxCondition.Text.ToString().Replace("'", "''"); ;
                 double sellingPrice = Double.Parse(txtBoxNewSellingPrice.Text);
                 double purchasePrice = Double.Parse(txtBoxNewPurchasePrice.Text);
 

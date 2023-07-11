@@ -14,9 +14,13 @@ namespace ThriftyTrak
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        private string userName, password, connStr;
+        public Form1(string userName, string password)
         {
             InitializeComponent();
+            this.userName = userName;
+            this.password = password;
+            connStr = "Server=localhost; Database=ThriftyTrak; User Id=" + userName + "; Password=" + password;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -30,14 +34,15 @@ namespace ThriftyTrak
 
             try
             {
-                String connStr = "Server=localhost; Database=ThriftyTrak; Integrated Security=True";
                 DateTime todayDate = DateTime.Now;
                 String DateNow = todayDate.ToString("yyyy-MM-dd HH:mm:ss.ffff");
-                String name = txtBoxName.Text.ToString();
-                String category = txtBoxCategory.Text.ToString();
-                String type = txtBoxType.Text.ToString();
-                string description = txtBoxDescription.Text.ToString();
-                string condition = txtBoxCondition.Text.ToString();
+
+                // make sure to add an escape character to any 's
+                String name = txtBoxName.Text.ToString().Replace("'", "''");
+                String category = txtBoxCategory.Text.ToString().Replace("'", "''"); ;
+                String type = txtBoxType.Text.ToString().Replace("'", "''"); ;
+                String description = txtBoxDescription.Text.ToString().Replace("'", "''"); ;
+                String condition = txtBoxCondition.Text.ToString().Replace("'", "''"); ;
                 double askingPrice = (float)Convert.ToDouble(txtBoxAskingPrice.Text);
                 double purchasePrice = (float)Convert.ToDouble(txtBoxPurchasePrice.Text);
 

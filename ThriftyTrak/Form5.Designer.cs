@@ -45,7 +45,7 @@
             this.btnSales = new System.Windows.Forms.Button();
             this.btnDonate = new System.Windows.Forms.Button();
             this.labelUsername = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblGreeting = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,7 +84,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1078, 505);
+            this.dataGridView1.Size = new System.Drawing.Size(1268, 505);
             this.dataGridView1.TabIndex = 32;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -115,7 +115,7 @@
             this.lblBanner.ForeColor = System.Drawing.Color.White;
             this.lblBanner.Location = new System.Drawing.Point(161, 105);
             this.lblBanner.Name = "lblBanner";
-            this.lblBanner.Size = new System.Drawing.Size(1078, 60);
+            this.lblBanner.Size = new System.Drawing.Size(1268, 60);
             this.lblBanner.TabIndex = 35;
             this.lblBanner.Text = "Welcome!";
             this.lblBanner.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -169,6 +169,7 @@
             this.button2.TabIndex = 42;
             this.button2.Text = "Log Out";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -246,29 +247,29 @@
             this.labelUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelUsername.AutoSize = true;
             this.labelUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUsername.Location = new System.Drawing.Point(1570, 25);
+            this.labelUsername.Location = new System.Drawing.Point(1760, 25);
             this.labelUsername.Name = "labelUsername";
             this.labelUsername.Size = new System.Drawing.Size(129, 21);
             this.labelUsername.TabIndex = 45;
             this.labelUsername.Text = "Hello, Username!";
             // 
-            // label1
+            // lblGreeting
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1110, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 21);
-            this.label1.TabIndex = 46;
-            this.label1.Text = "Hello, Username!";
+            this.lblGreeting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblGreeting.AutoSize = true;
+            this.lblGreeting.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGreeting.Location = new System.Drawing.Point(1300, 38);
+            this.lblGreeting.Name = "lblGreeting";
+            this.lblGreeting.Size = new System.Drawing.Size(129, 21);
+            this.lblGreeting.TabIndex = 46;
+            this.lblGreeting.Text = "Hello, Username!";
             // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1251, 767);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(1441, 767);
+            this.Controls.Add(this.lblGreeting);
             this.Controls.Add(this.labelUsername);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSell);
@@ -286,7 +287,8 @@
             this.Controls.Add(this.tableLabel);
             this.MinimumSize = new System.Drawing.Size(900, 700);
             this.Name = "Form5";
-            this.Text = "Form5";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "ThriftyTrak";
             this.Load += new System.EventHandler(this.Form5_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -310,6 +312,6 @@
         private System.Windows.Forms.Button btnSales;
         private System.Windows.Forms.Button btnDonate;
         private System.Windows.Forms.Label labelUsername;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblGreeting;
     }
 }

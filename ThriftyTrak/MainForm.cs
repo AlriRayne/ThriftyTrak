@@ -104,7 +104,7 @@ namespace ThriftyTrak
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Form1 add = new Form1();
+            Form1 add = new Form1("", "");
             add.Show();
         }
 
@@ -157,7 +157,7 @@ namespace ThriftyTrak
             {
                 MessageBox.Show(ex.Message);
             }
-            Form2 edit = new Form2("Inventory", int.Parse(id), name, category, type, description, condition, asking, purchased);
+            Form2 edit = new Form2("Inventory", int.Parse(id), name, category, type, description, condition, asking, purchased, "", "");
             edit.Show();
         }
 
@@ -372,7 +372,7 @@ namespace ThriftyTrak
             {
                 MessageBox.Show(ex.Message);
             }
-            Form3 edit = new Form3("Sold", int.Parse(id), name, category, type, description, condition, selling, purchased);
+            Form3 edit = new Form3("Sold", int.Parse(id), name, category, type, description, condition, selling, purchased, "", "");
             edit.Show();
         }
     }

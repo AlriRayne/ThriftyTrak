@@ -74,7 +74,7 @@
             this.txtBoxNewPurchasePrice.Location = new System.Drawing.Point(650, 344);
             this.txtBoxNewPurchasePrice.Name = "txtBoxNewPurchasePrice";
             this.txtBoxNewPurchasePrice.Size = new System.Drawing.Size(100, 20);
-            this.txtBoxNewPurchasePrice.TabIndex = 72;
+            this.txtBoxNewPurchasePrice.TabIndex = 70;
             // 
             // btnEdit
             // 
@@ -165,21 +165,21 @@
             // 
             this.txtBoxNewType.Location = new System.Drawing.Point(650, 142);
             this.txtBoxNewType.Name = "txtBoxNewType";
-            this.txtBoxNewType.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxNewType.Size = new System.Drawing.Size(300, 20);
             this.txtBoxNewType.TabIndex = 61;
             // 
             // txtBoxNewCategory
             // 
             this.txtBoxNewCategory.Location = new System.Drawing.Point(650, 96);
             this.txtBoxNewCategory.Name = "txtBoxNewCategory";
-            this.txtBoxNewCategory.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxNewCategory.Size = new System.Drawing.Size(300, 20);
             this.txtBoxNewCategory.TabIndex = 60;
             // 
             // txtBoxNewName
             // 
             this.txtBoxNewName.Location = new System.Drawing.Point(650, 48);
             this.txtBoxNewName.Name = "txtBoxNewName";
-            this.txtBoxNewName.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxNewName.Size = new System.Drawing.Size(300, 20);
             this.txtBoxNewName.TabIndex = 59;
             // 
             // label7
@@ -282,7 +282,7 @@
             this.txtBoxType.Enabled = false;
             this.txtBoxType.Location = new System.Drawing.Point(160, 142);
             this.txtBoxType.Name = "txtBoxType";
-            this.txtBoxType.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxType.Size = new System.Drawing.Size(300, 20);
             this.txtBoxType.TabIndex = 47;
             // 
             // txtBoxCategory
@@ -290,7 +290,7 @@
             this.txtBoxCategory.Enabled = false;
             this.txtBoxCategory.Location = new System.Drawing.Point(160, 96);
             this.txtBoxCategory.Name = "txtBoxCategory";
-            this.txtBoxCategory.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxCategory.Size = new System.Drawing.Size(300, 20);
             this.txtBoxCategory.TabIndex = 46;
             // 
             // txtBoxName
@@ -298,7 +298,7 @@
             this.txtBoxName.Enabled = false;
             this.txtBoxName.Location = new System.Drawing.Point(160, 48);
             this.txtBoxName.Name = "txtBoxName";
-            this.txtBoxName.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxName.Size = new System.Drawing.Size(300, 20);
             this.txtBoxName.TabIndex = 45;
             // 
             // btnCancel

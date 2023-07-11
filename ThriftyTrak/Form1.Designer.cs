@@ -50,21 +50,21 @@
             // 
             this.txtBoxName.Location = new System.Drawing.Point(151, 60);
             this.txtBoxName.Name = "txtBoxName";
-            this.txtBoxName.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxName.Size = new System.Drawing.Size(300, 20);
             this.txtBoxName.TabIndex = 0;
             // 
             // txtBoxCategory
             // 
             this.txtBoxCategory.Location = new System.Drawing.Point(151, 108);
             this.txtBoxCategory.Name = "txtBoxCategory";
-            this.txtBoxCategory.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxCategory.Size = new System.Drawing.Size(300, 20);
             this.txtBoxCategory.TabIndex = 1;
             // 
             // txtBoxType
             // 
             this.txtBoxType.Location = new System.Drawing.Point(151, 154);
             this.txtBoxType.Name = "txtBoxType";
-            this.txtBoxType.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxType.Size = new System.Drawing.Size(300, 20);
             this.txtBoxType.TabIndex = 2;
             // 
             // txtBoxDescription
@@ -148,7 +148,7 @@
             this.button1.Location = new System.Drawing.Point(151, 414);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 23);
-            this.button1.TabIndex = 12;
+            this.button1.TabIndex = 13;
             this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -167,7 +167,7 @@
             this.txtBoxPurchasePrice.Location = new System.Drawing.Point(151, 356);
             this.txtBoxPurchasePrice.Name = "txtBoxPurchasePrice";
             this.txtBoxPurchasePrice.Size = new System.Drawing.Size(100, 20);
-            this.txtBoxPurchasePrice.TabIndex = 13;
+            this.txtBoxPurchasePrice.TabIndex = 6;
             // 
             // btnCancel
             // 
