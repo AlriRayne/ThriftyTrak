@@ -1,0 +1,31 @@
+USE ThriftyTrak;
+
+CREATE ROLE Employee;
+
+GRANT SELECT, INSERT, DELETE
+ON Inventory
+TO Employee;
+
+GRANT SELECT, INSERT
+ON Sold
+TO Employee;
+
+CREATE ROLE Manager;
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON Inventory
+TO Manager;
+
+GRANT SELECT, INSERT
+ON Sold
+TO Manager;
+
+CREATE ROLE Owner;
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON Inventory
+TO Owner;
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON Sold
+TO Owner;
