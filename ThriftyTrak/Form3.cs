@@ -51,6 +51,24 @@ namespace ThriftyTrak
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            // input validation
+
+            // allow for no purchase price
+            if (txtBoxNewPurchasePrice.Text == "")
+            {
+                txtBoxNewPurchasePrice.Text = "0";
+            }
+
+            // check for empty text boxes
+            if (txtBoxNewName.Text == "" || txtBoxNewCategory.Text == "" || txtBoxNewType.Text == "" ||
+                txtBoxNewDescription.Text == "" || txtBoxNewCondition.Text == "" ||
+                txtBoxNewSellingPrice.Text == "")
+            {
+                MessageBox.Show("Please fill in all fields.");
+                return;
+            }
+
+            // further input validation will be in the form of an SQL exception
             try
             {
                 DateTime todayDate = DateTime.Now;
