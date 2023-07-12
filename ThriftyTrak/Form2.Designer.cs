@@ -58,6 +58,7 @@
             this.txtBoxNewCategory = new System.Windows.Forms.TextBox();
             this.txtBoxNewName = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label7
@@ -312,11 +313,21 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(770, 343);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(52, 13);
+            this.label15.TabIndex = 77;
+            this.label15.Text = "(Optional)";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 450);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtBoxNewPurchasePrice);
@@ -388,5 +399,6 @@
         private System.Windows.Forms.TextBox txtBoxNewCategory;
         private System.Windows.Forms.TextBox txtBoxNewName;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label label15;
     }
 }
