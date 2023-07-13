@@ -27,6 +27,13 @@ namespace ThriftyTrak
             string password = txtPassword.Text;
             bool valid = false;
 
+            // check for empty text boxes
+            if (txtUsername.Text == "" || txtPassword.Text == "")
+            {
+                MessageBox.Show("Please fill in all fields.");
+                return;
+            }
+
             try
             {
                 string connStr = "Server=localhost; Database=ThriftyTrak; User Id=" + userName + "; Password=" + password; 
