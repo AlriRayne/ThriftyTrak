@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -29,9 +30,11 @@ namespace ThriftyTrak
             try
             {
                 listBox1.Items.Clear();
-                String connStr = "Server=localhost; Database=ThriftyTrak; Integrated Security=True";
+                var datasource = @"(local)\SQLEXPRESS";
+                var database = "ThriftyTrak";
+                string connStr = @"Data Source=" + datasource + ";Initial Catalog=" + database + ";Integrated Security=True";
 
-                String query = "SELECT * FROM Inventory";
+                string query = "SELECT * FROM Inventory";
                 SqlConnection conn = new SqlConnection(connStr);
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(query, conn);
@@ -39,7 +42,7 @@ namespace ThriftyTrak
                 while (reader.Read())
                 {
 
-                    String entry = reader["ITEM_ID"].ToString();
+                    string entry = reader["ITEM_ID"].ToString();
                     entry += "  |  Name: " + reader["ITEM_NAME"].ToString();
                     entry += "  |  Category: " + reader["ITEM_CATEGORY"].ToString();
                     entry += "  |  Type: " + reader["ITEM_TYPE"].ToString();
@@ -68,9 +71,11 @@ namespace ThriftyTrak
             try
             {
                 listBox2.Items.Clear();
-                String connStr = "Server=localhost; Database=ThriftyTrak; Integrated Security=True";
+                var datasource = @"(local)\SQLEXPRESS";
+                var database = "ThriftyTrak";
+                string connStr = @"Data Source=" + datasource + ";Initial Catalog=" + database + ";Integrated Security=True";
 
-                String query = "SELECT * FROM Sold";
+                string query = "SELECT * FROM Sold";
                 SqlConnection conn = new SqlConnection(connStr);
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(query, conn);
@@ -78,7 +83,7 @@ namespace ThriftyTrak
                 while (reader.Read())
                 {
 
-                    String entry = reader["ITEM_ID"].ToString();
+                    string entry = reader["ITEM_ID"].ToString();
                     entry += "  |  Name: " + reader["ITEM_NAME"].ToString();
                     entry += "  |  Category: " + reader["ITEM_CATEGORY"].ToString();
                     entry += "  |  Type: " + reader["ITEM_TYPE"].ToString();
@@ -131,7 +136,9 @@ namespace ThriftyTrak
             // get the selected item from inventory
             try
             {
-                string connStr = "Server=localhost; Database=ThriftyTrak; Integrated Security=True";
+                var datasource = @"(local)\SQLEXPRESS";
+                var database = "ThriftyTrak";
+                string connStr = @"Data Source=" + datasource + ";Initial Catalog=" + database + ";Integrated Security=True";
                 string query = "SELECT * FROM Inventory WHERE ITEM_ID = " + itemId;
                 SqlConnection conn = new SqlConnection(connStr);
                 conn.Open();
@@ -194,7 +201,9 @@ namespace ThriftyTrak
                 // get the selected item from inventory
                 try
                 {
-                    string connStr = "Server=localhost; Database=ThriftyTrak; Integrated Security=True";
+                    var datasource = @"(local)\SQLEXPRESS";
+                    var database = "ThriftyTrak";
+                    string connStr = @"Data Source=" + datasource + ";Initial Catalog=" + database + ";Integrated Security=True";
 
                     string query = "SELECT * FROM Inventory WHERE ITEM_ID = " + itemId;
                     SqlConnection conn = new SqlConnection(connStr);
@@ -229,7 +238,9 @@ namespace ThriftyTrak
 
                 try
                 {
-                    string connStr = "Server=localhost; Database=ThriftyTrak; Integrated Security=True";
+                    var datasource = @"(local)\SQLEXPRESS";
+                    var database = "ThriftyTrak";
+                    string connStr = @"Data Source=" + datasource + ";Initial Catalog=" + database + ";Integrated Security=True";
 
                     string query = "INSERT INTO Sold VALUES(" + int.Parse(id) + ", '" +
                         name + "', '" + category + "', '" + type + "', '" + description +
@@ -257,7 +268,9 @@ namespace ThriftyTrak
                 try
                 {
                     listBox1.Items.Clear();
-                    string connStr = "Server=localhost; Database=ThriftyTrak; Integrated Security=True";
+                    var datasource = @"(local)\SQLEXPRESS";
+                    var database = "ThriftyTrak";
+                    string connStr = @"Data Source=" + datasource + ";Initial Catalog=" + database + ";Integrated Security=True";
 
                     string query = "SELECT * FROM Inventory";
                     SqlConnection conn = new SqlConnection(connStr);
@@ -292,7 +305,9 @@ namespace ThriftyTrak
                 try
                 {
                     listBox2.Items.Clear();
-                    string connStr = "Server=localhost; Database=ThriftyTrak; Integrated Security=True";
+                    var datasource = @"(local)\SQLEXPRESS";
+                    var database = "ThriftyTrak";
+                    string connStr = @"Data Source=" + datasource + ";Initial Catalog=" + database + ";Integrated Security=True";
 
                     string query = "SELECT * FROM Sold";
                     SqlConnection conn = new SqlConnection(connStr);
@@ -346,7 +361,9 @@ namespace ThriftyTrak
             // get the selected item from sales history
             try
             {
-                string connStr = "Server=localhost; Database=ThriftyTrak; Integrated Security=True";
+                var datasource = @"(local)\SQLEXPRESS";
+                var database = "ThriftyTrak";
+                string connStr = @"Data Source=" + datasource + ";Initial Catalog=" + database + ";Integrated Security=True";
                 string query = "SELECT * FROM Sold WHERE ITEM_ID = " + itemId;
                 SqlConnection conn = new SqlConnection(connStr);
                 conn.Open();

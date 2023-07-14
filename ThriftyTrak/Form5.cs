@@ -24,9 +24,13 @@ namespace ThriftyTrak
         public Form5(string userName, string password)
         {
             InitializeComponent();
+            //experimenting with Windows Auth only. Comment out lines 28, 29, and 32 if needed and reinstate line 33 for the mixed mode version
+            var datasource = @"(local)\SQLEXPRESS";
+            var database = "ThriftyTrak";
             this.userName = userName;
             this.password = password;
-            connStr = "Server=localhost; Database=ThriftyTrak; User Id=" + userName + "; Password=" + password;
+            connStr = @"Data Source=" + datasource + ";Initial Catalog=" + database + ";Persist Security Info=True;User ID=" + userName + ";Password=" + password;
+           // connStr = "Server=localhost; Database=ThriftyTrak; User Id=" + userName + "; Password=" + password;
             lblGreeting.Text = "Hello, " + userName + "!";
         }
 
