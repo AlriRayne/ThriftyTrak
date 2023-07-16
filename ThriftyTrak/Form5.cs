@@ -429,10 +429,6 @@ namespace ThriftyTrak
                     price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                     "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_DESCRIPTION) LIKE LOWER('%" + searchTerm + "%')");
                         searchColumns = "Description";
-                        if (dataGridView1.RowCount == 0)
-                        {
-                            MessageBox.Show("No matches found for \"" + searchTerm + "\" in " + searchColumns);
-                        }
                         break;
 
                     // condition search
