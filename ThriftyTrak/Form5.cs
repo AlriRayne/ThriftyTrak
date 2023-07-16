@@ -65,6 +65,19 @@ namespace ThriftyTrak
                 "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition," +
                 "ITEM_ASKING_PRICE AS 'Asking Price', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                 "ITEM_TIMESTAMP AS Date FROM Inventory");
+            this.ResizeEnd += new EventHandler(Form5_ResizeEnd);
+        }
+
+        private void Form5_ResizeEnd(object sender, EventArgs e)
+        {
+            if (inventoryView)
+            {
+                DisplayInventory();
+            }
+            else
+            {
+                DisplaySales();
+            }
         }
 
         private void btnAdd_Click_1(object sender, EventArgs e)
@@ -72,19 +85,6 @@ namespace ThriftyTrak
             Form1 add = new Form1(userName, password);
             add.Show();
         }
-
-
-        private void btnSales_Click(object sender, EventArgs e)
-        {
-            inventoryView = false;
-            tableLabel.Text = "Sales History:";
-            GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
-                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition," +
-                "ITEM_SELLING_PRICE AS 'Selling Price', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
-                "ITEM_TIMESTAMP AS Date FROM Sold");
-
-        }
-
 
         private void btnDonate_Click_1(object sender, EventArgs e)
         {
