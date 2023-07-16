@@ -360,7 +360,7 @@ namespace ThriftyTrak
                 string priceDisplay = "Asking Price";
                 string table = "Inventory";
                 string tableDisplay = "current inventory";
-                string searchColumns = "All columns";
+                string searchColumns = "all columns";
 
                 if (!inventoryView)
                 {
@@ -373,6 +373,8 @@ namespace ThriftyTrak
                 // all-column and column-specific queries
                 switch (columnSelection)
                 {
+
+                    // all-column search
                     case 0:
                         GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
                     "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
@@ -382,70 +384,114 @@ namespace ThriftyTrak
                     searchTerm + "%') OR LOWER(ITEM_TYPE)" + "LIKE LOWER('%" + searchTerm + "%') OR LOWER(ITEM_DESCRIPTION) " +
                     "LIKE LOWER('%" + searchTerm + "%')" + "OR LOWER(" + price + ") LIKE LOWER('%" + searchTerm + "%')" +
                     " OR LOWER(ITEM_TIMESTAMP) LIKE LOWER('%" + searchTerm + "%')");
+                        if (dataGridView1.RowCount == 0)
+                        {
+                            MessageBox.Show("No matches found for \"" + searchTerm + "\" in " + searchColumns);
+                        }
                         break;
 
+                    // id search
                     case 1:
                         GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
                     "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
                     price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                     "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_ID) LIKE LOWER('%" + searchTerm + "%')");
                         searchColumns = "Id";
+                        if (dataGridView1.RowCount == 0)
+                        {
+                            MessageBox.Show("No matches found for \"" + searchTerm + "\" in " + searchColumns);
+                        }
                         break;
 
+                    // name search
                     case 2:
                         GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
                     "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
                     price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                     "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_NAME) LIKE LOWER('%" + searchTerm + "%')");
                         searchColumns = "Name";
+                        if (dataGridView1.RowCount == 0)
+                        {
+                            MessageBox.Show("No matches found for \"" + searchTerm + "\" in " + searchColumns);
+                        }
                         break;
 
+                    // category search
                     case 3:
                         GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
                     "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
                     price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                     "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_CATEGORY) LIKE LOWER('%" + searchTerm + "%')");
                         searchColumns = "Category";
+                        if (dataGridView1.RowCount == 0)
+                        {
+                            MessageBox.Show("No matches found for \"" + searchTerm + "\" in " + searchColumns);
+                        }
                         break;
 
+                    // type search
                     case 4:
                         GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
                     "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
                     price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                     "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_TYPE) LIKE LOWER('%" + searchTerm + "%')");
                         searchColumns = "Type";
+                        if (dataGridView1.RowCount == 0)
+                        {
+                            MessageBox.Show("No matches found for \"" + searchTerm + "\" in " + searchColumns);
+                        }
                         break;
 
+                    // description search
                     case 5:
                         GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
                     "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
                     price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                     "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_DESCRIPTION) LIKE LOWER('%" + searchTerm + "%')");
                         searchColumns = "Description";
+                        if (dataGridView1.RowCount == 0)
+                        {
+                            MessageBox.Show("No matches found for \"" + searchTerm + "\" in " + searchColumns);
+                        }
                         break;
 
+                    // condition search
                     case 6:
                         GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
                     "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
                     price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                     "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_CONDITION) LIKE LOWER('%" + searchTerm + "%')");
                         searchColumns = "Condition";
+                        if (dataGridView1.RowCount == 0)
+                        {
+                            MessageBox.Show("No matches found for \"" + searchTerm + "\" in " + searchColumns);
+                        }
                         break;
 
+                    // price search
                     case 7:
                         GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
                     "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
                     price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                     "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(" + price + ") LIKE LOWER('%" + searchTerm + "%')");
                         searchColumns = priceDisplay;
+                        if (dataGridView1.RowCount == 0)
+                        {
+                            MessageBox.Show("No matches found for \"" + searchTerm + "\" in " + searchColumns);
+                        }
                         break;
 
+                    // date search
                     case 8:
                         GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
                     "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
                     price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                     "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_TIMESTAMP) LIKE LOWER('%" + searchTerm + "%')");
                         searchColumns = "Date";
+                        if (dataGridView1.RowCount == 0)
+                        {
+                            MessageBox.Show("No matches found for \"" + searchTerm + "\" in " + searchColumns);
+                        }
                         break;
                 }
 
