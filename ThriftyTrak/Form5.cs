@@ -384,10 +384,6 @@ namespace ThriftyTrak
                     searchTerm + "%') OR LOWER(ITEM_TYPE)" + "LIKE LOWER('%" + searchTerm + "%') OR LOWER(ITEM_DESCRIPTION) " +
                     "LIKE LOWER('%" + searchTerm + "%')" + "OR LOWER(" + price + ") LIKE LOWER('%" + searchTerm + "%')" +
                     " OR LOWER(ITEM_TIMESTAMP) LIKE LOWER('%" + searchTerm + "%')");
-                        if (dataGridView1.RowCount == 0)
-                        {
-                            MessageBox.Show("No matches found for \"" + searchTerm + "\" in " + searchColumns);
-                        }
                         break;
 
                     // id search
@@ -397,10 +393,6 @@ namespace ThriftyTrak
                     price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                     "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_ID) LIKE LOWER('%" + searchTerm + "%')");
                         searchColumns = "Id";
-                        if (dataGridView1.RowCount == 0)
-                        {
-                            MessageBox.Show("No matches found for \"" + searchTerm + "\" in " + searchColumns);
-                        }
                         break;
 
                     // name search
@@ -410,10 +402,6 @@ namespace ThriftyTrak
                     price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                     "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_NAME) LIKE LOWER('%" + searchTerm + "%')");
                         searchColumns = "Name";
-                        if (dataGridView1.RowCount == 0)
-                        {
-                            MessageBox.Show("No matches found for \"" + searchTerm + "\" in " + searchColumns);
-                        }
                         break;
 
                     // category search
@@ -423,10 +411,6 @@ namespace ThriftyTrak
                     price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                     "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_CATEGORY) LIKE LOWER('%" + searchTerm + "%')");
                         searchColumns = "Category";
-                        if (dataGridView1.RowCount == 0)
-                        {
-                            MessageBox.Show("No matches found for \"" + searchTerm + "\" in " + searchColumns);
-                        }
                         break;
 
                     // type search
@@ -436,10 +420,6 @@ namespace ThriftyTrak
                     price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                     "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_TYPE) LIKE LOWER('%" + searchTerm + "%')");
                         searchColumns = "Type";
-                        if (dataGridView1.RowCount == 0)
-                        {
-                            MessageBox.Show("No matches found for \"" + searchTerm + "\" in " + searchColumns);
-                        }
                         break;
 
                     // description search
@@ -462,10 +442,6 @@ namespace ThriftyTrak
                     price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                     "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_CONDITION) LIKE LOWER('%" + searchTerm + "%')");
                         searchColumns = "Condition";
-                        if (dataGridView1.RowCount == 0)
-                        {
-                            MessageBox.Show("No matches found for \"" + searchTerm + "\" in " + searchColumns);
-                        }
                         break;
 
                     // price search
@@ -475,10 +451,6 @@ namespace ThriftyTrak
                     price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                     "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(" + price + ") LIKE LOWER('%" + searchTerm + "%')");
                         searchColumns = priceDisplay;
-                        if (dataGridView1.RowCount == 0)
-                        {
-                            MessageBox.Show("No matches found for \"" + searchTerm + "\" in " + searchColumns);
-                        }
                         break;
 
                     // date search
@@ -488,11 +460,13 @@ namespace ThriftyTrak
                     price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                     "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_TIMESTAMP) LIKE LOWER('%" + searchTerm + "%')");
                         searchColumns = "Date";
-                        if (dataGridView1.RowCount == 0)
-                        {
-                            MessageBox.Show("No matches found for \"" + searchTerm + "\" in " + searchColumns);
-                        }
                         break;
+                }
+
+                // show error message for no results
+                if (dataGridView1.RowCount == 0)
+                {
+                    MessageBox.Show("No matches found for \"" + searchTerm + "\" in " + searchColumns);
                 }
 
                 // update tag for current table, search terms, and search columns
