@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ThriftyTrak
@@ -218,6 +219,7 @@ namespace ThriftyTrak
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
             int itemId;
+
             try
             {
                 itemId = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
@@ -225,7 +227,15 @@ namespace ThriftyTrak
             }
             catch (Exception ex)
             {
-                MessageBox.Show("No item selected");
+                MessageBox.Show("No item selected for deletion");
+                return;
+            }
+
+            String name = (String)dataGridView1.SelectedRows[0].Cells[1].Value;
+
+            var confirmation = MessageBox.Show("Confirm deletion of " + name + "?", "Confirm Deletion", MessageBoxButtons.YesNo);
+            if (!(confirmation == DialogResult.Yes))
+            {
                 return;
             }
 
@@ -273,15 +283,23 @@ namespace ThriftyTrak
                 return;
             }
 
+
             int itemId = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
             String id = "";
-            String name = "";
+            String name = (String)dataGridView1.SelectedRows[0].Cells[1].Value;
             String category = "";
             String type = "";
             String description = "";
             String condition = "";
-            String asking = "";
+            String asking = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
             String purchased = "";
+
+
+            var confirmation = MessageBox.Show("Confirm sale of " + name + " for $" + asking + "?", "Confirm Sale", MessageBoxButtons.YesNo);
+            if (!(confirmation == DialogResult.Yes))
+            {
+                return;
+            }
 
             // get the selected item from inventory
             try
