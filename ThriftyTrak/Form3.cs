@@ -75,11 +75,11 @@ namespace ThriftyTrak
                 string DateNow = todayDate.ToString("yyyy-MM-dd HH:mm:ss");
 
                 // make sure to add an escape character to any 's
-                String name = txtBoxName.Text.ToString().Replace("'", "''");
-                String category = txtBoxCategory.Text.ToString().Replace("'", "''"); ;
-                String type = txtBoxType.Text.ToString().Replace("'", "''"); ;
-                String description = txtBoxDescription.Text.ToString().Replace("'", "''"); ;
-                String condition = txtBoxCondition.Text.ToString().Replace("'", "''"); ;
+                String name = txtBoxNewName.Text.ToString().Replace("'", "''");
+                String category = txtBoxNewCategory.Text.ToString().Replace("'", "''"); ;
+                String type = txtBoxNewType.Text.ToString().Replace("'", "''"); ;
+                String description = txtBoxNewDescription.Text.ToString().Replace("'", "''"); ;
+                String condition = txtBoxNewCondition.Text.ToString().Replace("'", "''"); ;
                 double sellingPrice = Double.Parse(txtBoxNewSellingPrice.Text);
                 double purchasePrice = Double.Parse(txtBoxNewPurchasePrice.Text);
 
