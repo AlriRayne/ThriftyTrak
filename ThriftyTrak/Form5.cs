@@ -73,17 +73,6 @@ namespace ThriftyTrak
             add.Show();
         }
 
-       
-        private void btnDonate_Click(object sender, EventArgs e)
-        {
-            inventoryView = true;
-            tableLabel.Text = "Current Inventory:";
-            GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
-                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition," +
-                "ITEM_ASKING_PRICE AS 'Asking Price', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
-                "ITEM_TIMESTAMP AS Date FROM Inventory");
-        
-        }
 
         private void btnSales_Click(object sender, EventArgs e)
         {
@@ -96,13 +85,13 @@ namespace ThriftyTrak
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
 
         private void btnDonate_Click_1(object sender, EventArgs e)
+        {
+            DisplayInventory();
+        }
+
+        private void DisplayInventory()
         {
             inventoryView = true;
             tableLabel.Text = "Current Inventory:";
@@ -112,7 +101,7 @@ namespace ThriftyTrak
                 "ITEM_TIMESTAMP AS Date FROM Inventory");
         }
 
-        private void btnSales_Click_1(object sender, EventArgs e)
+        private void DisplaySales()
         {
             inventoryView = false;
             tableLabel.Text = "Sales History:";
@@ -122,10 +111,21 @@ namespace ThriftyTrak
                 "ITEM_TIMESTAMP AS Date FROM Sold");
         }
 
+        private void btnSales_Click_1(object sender, EventArgs e)
+        {
+            DisplaySales();
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Form1 add = new Form1(userName, password);
+            add.FormClosed += new FormClosedEventHandler(addFormClosed);
             add.Show();
+        }
+
+        private void addFormClosed(object sender, FormClosedEventArgs e)
+        {
+            DisplayInventory();
         }
 
         private void btnEdit_Click_1(object sender, EventArgs e)
@@ -178,6 +178,7 @@ namespace ThriftyTrak
                     MessageBox.Show(ex.Message);
                 }
                 Form2 edit = new Form2(table, itemId, name, category, type, description, condition, asking, purchased, userName, password);
+                edit.FormClosed += new FormClosedEventHandler(editInventoryClosed);
                 edit.Show();
             }
             else
@@ -212,8 +213,19 @@ namespace ThriftyTrak
                     MessageBox.Show(ex.Message);
                 }
                 Form3 edit = new Form3("Sold", itemId, name, category, type, description, condition, selling, purchased, userName, password);
+                edit.FormClosed += new FormClosedEventHandler(editSalesClosed);
                 edit.Show();
             }
+        }
+
+        private void editInventoryClosed(object sender, FormClosedEventArgs e)
+        {
+            DisplayInventory();
+        }
+
+        private void editSalesClosed(object sender, FormClosedEventArgs e)
+        {
+            DisplaySales();
         }
 
         private void btnDelete_Click_1(object sender, EventArgs e)
