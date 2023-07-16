@@ -25,7 +25,7 @@ namespace ThriftyTrak
         {
             InitializeComponent();
             //experimenting with Windows Auth only. Comment out lines 28, 29, and 32 if needed and reinstate line 33 for the mixed mode version
-            var datasource = @"(local)\SQLEXPRESS";
+            var datasource = @"(local)";
             var database = "ThriftyTrak";
             this.userName = userName;
             this.password = password;
@@ -351,94 +351,135 @@ namespace ThriftyTrak
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-            /* 
-             * Ignore this for now, I was experimenting with how to implement a keyword
-             * search. This is for next sprint :)
-             * 
             String searchTerm = "";
-            bool wholeWordMatch = false;
-            if (SearchDialog("Search by keyword", "Keyword:", ref searchTerm, ref wholeWordMatch) == DialogResult.OK)
+            int columnSelection = 0;
+
+            if (SearchDialog("Search by keyword or phrase", "Keyword/Phrase:", ref searchTerm, ref columnSelection) == DialogResult.OK)
             {
-                MessageBox.Show("Whole word: " + wholeWordMatch.ToString());
-                if (inventoryView)
+                string price = "ITEM_ASKING_PRICE";
+                string priceDisplay = "Asking Price";
+                string table = "Inventory";
+                string tableDisplay = "current inventory";
+                string searchColumns = "All columns";
+
+                if (!inventoryView)
                 {
-                    // replace any escaped 's with single '
-                    tableLabel.Text = "Results for \"" + searchTerm.Replace("''", "'") + "\" in current inventory:";
-
-                    if (wholeWordMatch)
-                    {
-                        // query for whole word match only
-                        GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
-                            "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition," +
-                            "ITEM_ASKING_PRICE AS 'Asking Price', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
-                            "ITEM_TIMESTAMP AS Date FROM Inventory WHERE LOWER(ITEM_NAME) LIKE LOWER('%[^a-z]" + searchTerm +
-                            "[^a-z]%') OR LOWER(ITEM_CATEGORY) LIKE LOWER('%[^a-z]" + searchTerm + "[^a-z]%') OR LOWER(ITEM_TYPE)" +
-                            "LIKE LOWER('%[^a-z]" + searchTerm + "[^a-z]%') OR LOWER(ITEM_DESCRIPTION) LIKE LOWER('%[^a-z]" + searchTerm + "[^a-z]%')");
-                    }
-                    else
-                    {
-                        // query for any match
-                        GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
-                            "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition," +
-                            "ITEM_ASKING_PRICE AS 'Asking Price', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
-                            "ITEM_TIMESTAMP AS Date FROM Inventory WHERE LOWER(ITEM_NAME) LIKE LOWER('%" + searchTerm +
-                            "%') OR LOWER(ITEM_CATEGORY) LIKE LOWER('%" + searchTerm + "%') OR LOWER(ITEM_TYPE)" +
-                            "LIKE LOWER('%" + searchTerm + "%') OR LOWER(ITEM_DESCRIPTION) LIKE LOWER('%" + searchTerm + "%')");
-                    }
+                    price = "ITEM_SELLING_PRICE";
+                    priceDisplay = "Selling Price";
+                    table = "Sold";
+                    tableDisplay = "sales history";
                 }
-                else
+
+                // all-column and column-specific queries
+                switch (columnSelection)
                 {
-                    // replace any escaped 's with single '
-                    tableLabel.Text = "Results for \"" + searchTerm.Replace("''", "'") + "\" in sales history:";
-
-                    if (wholeWordMatch)
-                    {
-                        // query for whole word match only
+                    case 0:
                         GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
-                            "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition," +
-                            "ITEM_SELLING_PRICE AS 'Selling Price', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
-                            "ITEM_TIMESTAMP AS Date FROM Sold WHERE LOWER(ITEM_NAME) LIKE LOWER('%[^a-z]" + searchTerm +
-                            "[^a-z]%') OR LOWER(ITEM_CATEGORY) LIKE LOWER('%[^a-z]" + searchTerm + "[^a-z]%') OR LOWER(ITEM_TYPE)" +
-                            "LIKE LOWER('%[^a-z]" + searchTerm + "[^a-z]%') OR LOWER(ITEM_DESCRIPTION) LIKE LOWER('%[^a-z]" + searchTerm + "[^a-z]%')");
-                    }
-                    else
-                    {
-                        // query for whole word match only
+                    "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                    price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                    "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_ID) LIKE LOWER('%" + searchTerm +
+                    "%') OR LOWER(ITEM_NAME) LIKE LOWER('%" + searchTerm + "%') OR LOWER(ITEM_CATEGORY) LIKE LOWER('%" +
+                    searchTerm + "%') OR LOWER(ITEM_TYPE)" + "LIKE LOWER('%" + searchTerm + "%') OR LOWER(ITEM_DESCRIPTION) " +
+                    "LIKE LOWER('%" + searchTerm + "%')" + "OR LOWER(" + price + ") LIKE LOWER('%" + searchTerm + "%')" +
+                    " OR LOWER(ITEM_TIMESTAMP) LIKE LOWER('%" + searchTerm + "%')");
+                        break;
 
+                    case 1:
                         GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
-                            "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition," +
-                            "ITEM_SELLING_PRICE AS 'Selling Price', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
-                            "ITEM_TIMESTAMP AS Date FROM Sold WHERE LOWER(ITEM_NAME) LIKE LOWER('%" + searchTerm +
-                            "%') OR LOWER(ITEM_CATEGORY) LIKE LOWER('%" + searchTerm + "%') OR LOWER(ITEM_TYPE)" +
-                            "LIKE LOWER('%" + searchTerm + "%') OR LOWER(ITEM_DESCRIPTION) LIKE LOWER('%" + searchTerm + "%')");
-                    }
+                    "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                    price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                    "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_ID) LIKE LOWER('%" + searchTerm + "%')");
+                        searchColumns = "Id";
+                        break;
+
+                    case 2:
+                        GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
+                    "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                    price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                    "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_NAME) LIKE LOWER('%" + searchTerm + "%')");
+                        searchColumns = "Name";
+                        break;
+
+                    case 3:
+                        GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
+                    "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                    price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                    "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_CATEGORY) LIKE LOWER('%" + searchTerm + "%')");
+                        searchColumns = "Category";
+                        break;
+
+                    case 4:
+                        GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
+                    "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                    price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                    "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_TYPE) LIKE LOWER('%" + searchTerm + "%')");
+                        searchColumns = "Type";
+                        break;
+
+                    case 5:
+                        GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
+                    "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                    price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                    "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_DESCRIPTION) LIKE LOWER('%" + searchTerm + "%')");
+                        searchColumns = "Description";
+                        break;
+
+                    case 6:
+                        GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
+                    "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                    price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                    "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_CONDITION) LIKE LOWER('%" + searchTerm + "%')");
+                        searchColumns = "Condition";
+                        break;
+
+                    case 7:
+                        GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
+                    "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                    price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                    "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(" + price + ") LIKE LOWER('%" + searchTerm + "%')");
+                        searchColumns = priceDisplay;
+                        break;
+
+                    case 8:
+                        GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
+                    "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                    price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                    "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_TIMESTAMP) LIKE LOWER('%" + searchTerm + "%')");
+                        searchColumns = "Date";
+                        break;
                 }
+
+                // update tag for current table, search terms, and search columns
+                // replace any escaped 's with single '
+                tableLabel.Text = "Results for \"" + searchTerm.Replace("''", "'") + "\" in " + searchColumns + " in " + tableDisplay + ":";
             }
-            */
         }
+        
 
-        public static DialogResult SearchDialog(string title, string prompt, ref String value, ref bool wholeWordMatch)
+        public static DialogResult SearchDialog(string title, string prompt, ref String value, ref int columnSelection)
         {
             Form search = new Form();
             Label label = new Label();
             TextBox textBox = new TextBox();
-            CheckBox wholeWord = new CheckBox();
             Button buttonSearch = new Button();
             Button buttonCancel = new Button();
+            ComboBox columnSelect = new ComboBox();
+            columnSelect.Items.AddRange(new object[] { "All", "Id", "Item Name", "Category", "Type", "Description", "Condition", "Price", "Date" });
+            columnSelect.SelectedIndex = 0;
+            columnSelect.DropDownStyle = ComboBoxStyle.DropDownList;
 
             search.Text = title;
             label.Text = prompt;
             buttonSearch.Text = "Search";
             buttonCancel.Text = "Cancel";
-            wholeWord.Text = "Match whole word only";
 
             buttonSearch.DialogResult = DialogResult.OK;
             buttonCancel.DialogResult = DialogResult.Cancel;
 
             label.SetBounds(36, 45, 372, 13);
             textBox.SetBounds(36, 75, 700, 20);
-            wholeWord.SetBounds(36, 110, 372, 20);
+            columnSelect.SetBounds(36, 110, 150, 20);
+
             buttonSearch.SetBounds(180, 160, 160, 60);
             buttonCancel.SetBounds(400, 160, 160, 60);
             buttonSearch.Size = new Size(200, 30);
@@ -451,7 +492,7 @@ namespace ThriftyTrak
             search.MinimizeBox = false;
             search.MaximizeBox = false;
 
-            search.Controls.AddRange(new Control[] { label, textBox, wholeWord, buttonSearch, buttonCancel });
+            search.Controls.AddRange(new Control[] { label, textBox, columnSelect, buttonSearch, buttonCancel });
             search.AcceptButton = buttonSearch;
             search.CancelButton = buttonCancel;
 
@@ -460,14 +501,15 @@ namespace ThriftyTrak
             // escape any 's
             value = textBox.Text.Replace("'", "''");
 
-            wholeWordMatch = wholeWord.Checked;
+            // get the column selection
+            columnSelection = columnSelect.SelectedIndex;
 
             return dialogResult;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

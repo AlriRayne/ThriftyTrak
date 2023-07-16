@@ -35,7 +35,7 @@ namespace ThriftyTrak
             }
             else
             {
-                var datasource = @"(local)\SQLEXPRESS";
+                var datasource = @"(local)";
                 var database = "ThriftyTrak";
                 var thisUsername = userName;
                 var thisPassword = password;
