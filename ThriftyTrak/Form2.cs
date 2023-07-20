@@ -21,7 +21,7 @@ namespace ThriftyTrak
             string description, string condition, string asking, string purchased, string userName, string password)
         {
             InitializeComponent();
-
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.userName = userName;
             this.password = password;
             connStr = "Server=localhost; Database=ThriftyTrak; User Id=" + userName + "; Password=" + password;

@@ -35,7 +35,9 @@ namespace ThriftyTrak
             }
             else
             {
-                var datasource = @"(local)";
+                //Use SQLEXPRESS for first version of database. Use just (local) for second version.
+                var datasource = @"(local)\SQLEXPRESS";
+                //var datasource = @"(local):;
                 var database = "ThriftyTrak";
                 var thisUsername = userName;
                 var thisPassword = password;

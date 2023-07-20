@@ -18,6 +18,7 @@ namespace ThriftyTrak
         public Form1(string userName, string password)
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.userName = userName;
             this.password = password;
             connStr = "Server=localhost; Database=ThriftyTrak; User Id=" + userName + "; Password=" + password;
