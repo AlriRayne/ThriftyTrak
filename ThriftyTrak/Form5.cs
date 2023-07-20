@@ -347,7 +347,7 @@ namespace ThriftyTrak
             // add the selected item to sold
 
             DateTime todayDate = DateTime.Now;
-            string DateNow = todayDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            string DateNow = todayDate.ToString("yyyy-MM-dd HH:mm:ss");
 
             try
             {
