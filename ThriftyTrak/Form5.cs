@@ -25,8 +25,9 @@ namespace ThriftyTrak
         public Form5(string userName, string password)
         {
             InitializeComponent();
-            //experimenting with Windows Auth only. Comment out lines 28, 29, and 32 if needed and reinstate line 33 for the mixed mode version
-            var datasource = @"(local)";
+            //Use SQLEXPRESS for first database version. Use just (local) for second version
+            var datasource = @"(local)\SQLEXPRESS";
+            //var datasource = @"(local)";
             var database = "ThriftyTrak";
             this.userName = userName;
             this.password = password;
@@ -500,7 +501,11 @@ namespace ThriftyTrak
                 tableLabel.Text = "Results for \"" + searchTerm.Replace("''", "'") + "\" in " + searchColumns + " in " + tableDisplay + ":";
             }
         }
-        
+
+        private void btnDash_Click(object sender, EventArgs e)
+        {
+
+        }
 
         public static DialogResult SearchDialog(string title, string prompt, ref String value, ref int columnSelection)
         {

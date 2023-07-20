@@ -20,7 +20,7 @@ namespace ThriftyTrak
         public Form3(string table, int id, string name, string category, string type, string description, string condition, string selling, string purchased, string userName, string password)
         {
             InitializeComponent();
-
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.userName = userName;
             this.password = password;
             connStr = "Server=localhost; Database=ThriftyTrak; User Id=" + userName + "; Password=" + password;
