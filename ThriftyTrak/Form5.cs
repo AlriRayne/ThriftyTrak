@@ -83,12 +83,14 @@ namespace ThriftyTrak
 
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
+            myBtnSetting(btnAdd, null);
             Form1 add = new Form1(userName, password);
             add.Show();
         }
 
         private void btnDonate_Click_1(object sender, EventArgs e)
         {
+            myBtnSetting(btnDonate, null);
             DisplayInventory();
         }
 
@@ -114,11 +116,13 @@ namespace ThriftyTrak
 
         private void btnSales_Click_1(object sender, EventArgs e)
         {
+            myBtnSetting(btnSales, null);
             DisplaySales();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            myBtnSetting(btnAdd, null);
             Form1 add = new Form1(userName, password);
             add.FormClosed += new FormClosedEventHandler(addFormClosed);
             add.Show();
@@ -131,6 +135,7 @@ namespace ThriftyTrak
 
         private void btnEdit_Click_1(object sender, EventArgs e)
         {
+            myBtnSetting(btnEdit, null);
             if (dataGridView1.SelectedRows == null)
             {
                 MessageBox.Show("Please select an item to edit");
@@ -231,6 +236,7 @@ namespace ThriftyTrak
 
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
+            myBtnSetting(btnDelete, null);
             int itemId;
 
             try
@@ -290,6 +296,7 @@ namespace ThriftyTrak
 
         private void btnSell_Click(object sender, EventArgs e)
         {
+            myBtnSetting(btnSell, null);
             if (!inventoryView || dataGridView1.SelectedRows == null)
             {
                 MessageBox.Show("Please select an item to sell from current inventory");
@@ -382,6 +389,7 @@ namespace ThriftyTrak
 
         private void button3_Click(object sender, EventArgs e)
         {
+            myBtnSetting(btnSearch, null);
             String searchTerm = "";
             int columnSelection = 0;
 
@@ -504,7 +512,7 @@ namespace ThriftyTrak
 
         private void btnDash_Click(object sender, EventArgs e)
         {
-
+            myBtnSetting(btnDash, null);
         }
 
         public static DialogResult SearchDialog(string title, string prompt, ref String value, ref int columnSelection)
@@ -561,6 +569,17 @@ namespace ThriftyTrak
         private void button2_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        //Change button colors in navPanel
+        private void myBtnSetting (object sender, EventArgs e)
+        {
+            foreach(Control c in navPanel.Controls)
+            {
+                c.BackColor = Color.FromArgb(255,102,102,153);
+            }
+            Control click = (Control)sender;
+            click.BackColor = Color.FromArgb(255,0,176,80);
         }
     }
 }

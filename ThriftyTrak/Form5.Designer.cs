@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form5));
             this.tableLabel = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -46,7 +46,9 @@
             this.btnDonate = new System.Windows.Forms.Button();
             this.labelUsername = new System.Windows.Forms.Label();
             this.lblGreeting = new System.Windows.Forms.Label();
+            this.navPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.navPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLabel
@@ -70,14 +72,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(161, 237);
             this.dataGridView1.MultiSelect = false;
@@ -125,7 +127,7 @@
             this.btnDash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDash.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDash.ForeColor = System.Drawing.Color.White;
-            this.btnDash.Location = new System.Drawing.Point(5, 105);
+            this.btnDash.Location = new System.Drawing.Point(0, 0);
             this.btnDash.Name = "btnDash";
             this.btnDash.Size = new System.Drawing.Size(150, 60);
             this.btnDash.TabIndex = 36;
@@ -139,7 +141,7 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(5, 435);
+            this.btnDelete.Location = new System.Drawing.Point(0, 330);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(150, 60);
             this.btnDelete.TabIndex = 44;
@@ -153,7 +155,7 @@
             this.btnSell.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSell.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSell.ForeColor = System.Drawing.Color.White;
-            this.btnSell.Location = new System.Drawing.Point(5, 501);
+            this.btnSell.Location = new System.Drawing.Point(0, 396);
             this.btnSell.Name = "btnSell";
             this.btnSell.Size = new System.Drawing.Size(150, 60);
             this.btnSell.TabIndex = 43;
@@ -167,7 +169,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(5, 633);
+            this.button2.Location = new System.Drawing.Point(5, 634);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(150, 60);
             this.button2.TabIndex = 42;
@@ -182,7 +184,7 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(5, 567);
+            this.btnSearch.Location = new System.Drawing.Point(0, 462);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(150, 60);
             this.btnSearch.TabIndex = 41;
@@ -196,7 +198,7 @@
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(5, 369);
+            this.btnEdit.Location = new System.Drawing.Point(0, 264);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(150, 60);
             this.btnEdit.TabIndex = 40;
@@ -210,7 +212,7 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(5, 303);
+            this.btnAdd.Location = new System.Drawing.Point(0, 198);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(150, 60);
             this.btnAdd.TabIndex = 39;
@@ -224,7 +226,7 @@
             this.btnSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSales.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSales.ForeColor = System.Drawing.Color.White;
-            this.btnSales.Location = new System.Drawing.Point(5, 237);
+            this.btnSales.Location = new System.Drawing.Point(0, 132);
             this.btnSales.Name = "btnSales";
             this.btnSales.Size = new System.Drawing.Size(150, 60);
             this.btnSales.TabIndex = 38;
@@ -238,7 +240,7 @@
             this.btnDonate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDonate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDonate.ForeColor = System.Drawing.Color.White;
-            this.btnDonate.Location = new System.Drawing.Point(5, 171);
+            this.btnDonate.Location = new System.Drawing.Point(0, 66);
             this.btnDonate.Name = "btnDonate";
             this.btnDonate.Size = new System.Drawing.Size(150, 60);
             this.btnDonate.TabIndex = 37;
@@ -268,23 +270,31 @@
             this.lblGreeting.TabIndex = 46;
             this.lblGreeting.Text = "Hello, Username!";
             // 
+            // navPanel
+            // 
+            this.navPanel.Controls.Add(this.btnDash);
+            this.navPanel.Controls.Add(this.btnDonate);
+            this.navPanel.Controls.Add(this.btnSales);
+            this.navPanel.Controls.Add(this.btnSell);
+            this.navPanel.Controls.Add(this.btnSearch);
+            this.navPanel.Controls.Add(this.btnDelete);
+            this.navPanel.Controls.Add(this.btnAdd);
+            this.navPanel.Controls.Add(this.btnEdit);
+            this.navPanel.Location = new System.Drawing.Point(5, 105);
+            this.navPanel.Name = "navPanel";
+            this.navPanel.Size = new System.Drawing.Size(150, 523);
+            this.navPanel.TabIndex = 47;
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1441, 767);
+            this.Controls.Add(this.navPanel);
             this.Controls.Add(this.lblGreeting);
             this.Controls.Add(this.labelUsername);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnSell);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnSales);
-            this.Controls.Add(this.btnDonate);
-            this.Controls.Add(this.btnDash);
             this.Controls.Add(this.lblBanner);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblTitle);
@@ -296,6 +306,7 @@
             this.Text = "ThriftyTrak";
             this.Load += new System.EventHandler(this.Form5_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.navPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -318,5 +329,6 @@
         private System.Windows.Forms.Button btnDonate;
         private System.Windows.Forms.Label labelUsername;
         private System.Windows.Forms.Label lblGreeting;
+        private System.Windows.Forms.Panel navPanel;
     }
 }
