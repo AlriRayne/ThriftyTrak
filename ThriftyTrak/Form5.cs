@@ -35,7 +35,7 @@ namespace ThriftyTrak
            // connStr = "Server=localhost; Database=ThriftyTrak; User Id=" + userName + "; Password=" + password;
             lblGreeting.Text = "Hello, " + userName + "!";
         }
-
+  
         private void GetData(string query)
         {
             try
@@ -59,6 +59,34 @@ namespace ThriftyTrak
             }
         }
 
+        //adding GetData for Sales in DGV2
+        private void GetSales()
+        {
+            dataGridView2.DataSource = null;
+
+            try
+            {
+                SqlCommand command = new SqlCommand();
+                SqlConnection conn = new SqlConnection(connStr);
+                conn.Open();
+                command.Connection = conn;
+                command.CommandText = "SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
+                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition," +
+                "ITEM_SELLING_PRICE AS 'Selling Price', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                "ITEM_TIMESTAMP AS Date FROM Sold";
+                SqlDataAdapter da = new SqlDataAdapter(command);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dataGridView2.DataSource = dt;
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void Form5_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = bindingSource;
@@ -67,6 +95,8 @@ namespace ThriftyTrak
                 "ITEM_ASKING_PRICE AS 'Asking Price', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                 "ITEM_TIMESTAMP AS Date FROM Inventory");
             this.ResizeEnd += new EventHandler(Form5_ResizeEnd);
+
+            GetSales();
         }
 
         private void Form5_ResizeEnd(object sender, EventArgs e)
@@ -91,6 +121,9 @@ namespace ThriftyTrak
         private void btnDonate_Click_1(object sender, EventArgs e)
         {
             myBtnSetting(btnDonate, null);
+            dataGridView2.Visible = false;
+            lblSalesTable.Visible = false;
+            dataGridView1.Height = 500;
             DisplayInventory();
         }
 
@@ -117,6 +150,9 @@ namespace ThriftyTrak
         private void btnSales_Click_1(object sender, EventArgs e)
         {
             myBtnSetting(btnSales, null);
+            dataGridView2.Visible = false;
+            lblSalesTable.Visible = false;
+            dataGridView1.Height = 500;
             DisplaySales();
         }
 
@@ -513,6 +549,11 @@ namespace ThriftyTrak
         private void btnDash_Click(object sender, EventArgs e)
         {
             myBtnSetting(btnDash, null);
+            dataGridView2.Visible = true;
+            lblSalesTable.Visible = true;
+            dataGridView1.Height = 250;
+            DisplayInventory();
+            GetSales();
         }
 
         public static DialogResult SearchDialog(string title, string prompt, ref String value, ref int columnSelection)
