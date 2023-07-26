@@ -48,8 +48,10 @@ namespace ThriftyTrak
                 {
                     conn.Open();
                     Form5 dashboard = new Form5(userName, password);
-                    dashboard.Show();
-              
+                    this.Hide();
+                    dashboard.ShowDialog();
+                    this.Close();
+
                 }
                 catch(Exception ex)
                 {

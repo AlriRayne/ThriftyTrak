@@ -607,9 +607,13 @@ namespace ThriftyTrak
             return dialogResult;
         }
 
+        //Sign Out button
         private void button2_Click(object sender, EventArgs e)
         {
-            Close();
+            LoginForm login = new LoginForm();
+            this.Hide();
+            login.ShowDialog();
+            this.Close();
         }
 
         //Change button colors in navPanel
