@@ -610,6 +610,10 @@ namespace ThriftyTrak
         //Sign Out button
         private void button2_Click(object sender, EventArgs e)
         {
+            if(MessageBox.Show("Are you sure you want to sign out?", "Sign Out Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return;
+            }
             LoginForm login = new LoginForm();
             this.Hide();
             login.ShowDialog();
