@@ -22,17 +22,14 @@ namespace ThriftyTrak
         private string userName, password, connStr;
 
 
-        public Form5(string userName, string password)
+        public Form5(string userName, string password, string connStr)
         {
             InitializeComponent();
-            //Use SQLEXPRESS for first database version. Use just (local) for second version
-            var datasource = @"(local)\SQLEXPRESS";
-            //var datasource = @"(local)";
-            var database = "ThriftyTrak";
+
             this.userName = userName;
             this.password = password;
-            connStr = @"Data Source=" + datasource + ";Initial Catalog=" + database + ";Persist Security Info=True;User ID=" + userName + ";Password=" + password;
-           // connStr = "Server=localhost; Database=ThriftyTrak; User Id=" + userName + "; Password=" + password;
+            this.connStr = connStr;
+
             lblGreeting.Text = "Hello, " + userName + "!";
         }
   
@@ -114,7 +111,7 @@ namespace ThriftyTrak
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
             myBtnSetting(btnAdd, null);
-            Form1 add = new Form1(userName, password);
+            Form1 add = new Form1(userName, password, connStr);
             add.Show();
         }
 
@@ -159,7 +156,7 @@ namespace ThriftyTrak
         private void btnAdd_Click(object sender, EventArgs e)
         {
             myBtnSetting(btnAdd, null);
-            Form1 add = new Form1(userName, password);
+            Form1 add = new Form1(userName, password, connStr);
             add.FormClosed += new FormClosedEventHandler(addFormClosed);
             add.Show();
         }
@@ -219,7 +216,7 @@ namespace ThriftyTrak
                 {
                     MessageBox.Show(ex.Message);
                 }
-                Form2 edit = new Form2(table, itemId, name, category, type, description, condition, asking, purchased, userName, password);
+                Form2 edit = new Form2(table, itemId, name, category, type, description, condition, asking, purchased, userName, password, connStr);
                 edit.FormClosed += new FormClosedEventHandler(editInventoryClosed);
                 edit.Show();
             }
@@ -254,7 +251,7 @@ namespace ThriftyTrak
                 {
                     MessageBox.Show(ex.Message);
                 }
-                Form3 edit = new Form3("Sold", itemId, name, category, type, description, condition, selling, purchased, userName, password);
+                Form3 edit = new Form3("Sold", itemId, name, category, type, description, condition, selling, purchased, userName, password, connStr);
                 edit.FormClosed += new FormClosedEventHandler(editSalesClosed);
                 edit.Show();
             }

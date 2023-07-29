@@ -18,13 +18,13 @@ namespace ThriftyTrak
         private string table, userName, password, connStr;
 
         public Form2(string table, int id, string name, string category, string type, 
-            string description, string condition, string asking, string purchased, string userName, string password)
+            string description, string condition, string asking, string purchased, string userName, string password, string connStr)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.userName = userName;
             this.password = password;
-            connStr = "Server=localhost; Database=ThriftyTrak; User Id=" + userName + "; Password=" + password;
+            this.connStr = connStr;
 
             // set item id for reference and choose table
 
