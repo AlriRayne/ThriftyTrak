@@ -14,16 +14,24 @@ namespace ThriftyTrak
 {
     public partial class LoginForm : Form
     {
+        public static string userName = "";
+        public static string password = "";
 
         public LoginForm()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            txtPassword.KeyUp += HandleEnter;
         }
 
-        public static string userName = "";
-        public static string password = "";
-
+        private void HandleEnter(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Click(sender, e);
+                e.Handled = true;
+            }
+        }
         private void btnLogin_Click(object sender, EventArgs e)
         {
             userName = txtUsername.Text;

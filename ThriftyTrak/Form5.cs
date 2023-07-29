@@ -19,6 +19,7 @@ namespace ThriftyTrak
         private BindingSource bindingSource = new BindingSource();
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
         private bool inventoryView = true;
+        private bool dashBoardView = true;
         private string userName, password, connStr;
 
 
@@ -117,6 +118,7 @@ namespace ThriftyTrak
 
         private void btnDonate_Click_1(object sender, EventArgs e)
         {
+            dashBoardView = false;
             myBtnSetting(btnDonate, null);
             dataGridView2.Visible = false;
             lblSalesTable.Visible = false;
@@ -146,6 +148,7 @@ namespace ThriftyTrak
 
         private void btnSales_Click_1(object sender, EventArgs e)
         {
+            dashBoardView = false;
             myBtnSetting(btnSales, null);
             dataGridView2.Visible = false;
             lblSalesTable.Visible = false;
@@ -418,6 +421,10 @@ namespace ThriftyTrak
                 "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition," +
                 "ITEM_ASKING_PRICE AS 'Asking Price', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                 "ITEM_TIMESTAMP AS Date FROM Inventory");
+            if (dashBoardView)
+            {
+                GetSales();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -545,6 +552,7 @@ namespace ThriftyTrak
 
         private void btnDash_Click(object sender, EventArgs e)
         {
+            dashBoardView = true;
             myBtnSetting(btnDash, null);
             dataGridView2.Visible = true;
             lblSalesTable.Visible = true;
