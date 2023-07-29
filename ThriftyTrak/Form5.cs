@@ -283,8 +283,8 @@ namespace ThriftyTrak
         {
 
             // testing return item function with this button
-            ReturnItem();
-            return;
+            //ReturnItem();
+            //return;
 
             myBtnSetting(btnDelete, null);
             int itemId;

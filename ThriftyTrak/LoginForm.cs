@@ -52,20 +52,6 @@ namespace ThriftyTrak
                 string connStr = "Server=localhost; Database=ThriftyTrak; User Id=" + userName + "; Password=" + password;
                 SqlConnection conn = new SqlConnection(connString);
 
-                try
-                {
-                    conn = new SqlConnection(connStr);
-                    conn.Open();
-                    Form5 dashboard = new Form5(userName, password, connStr);
-                    this.Hide();
-                    dashboard.ShowDialog();
-                    this.Close();
-                }
-                catch (Exception exce)
-                {
-                    // let the outer catch block produce one error message
-                }
-
                 // try the connection all three ways
                 // and you might want to try moving these around to see which can work. I put the named SQLSERVER
                 // instance at the top.
