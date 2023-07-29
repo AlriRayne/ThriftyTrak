@@ -32,6 +32,16 @@ namespace ThriftyTrak
             this.connStr = connStr;
 
             lblGreeting.Text = "Hello, " + userName + "!";
+            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView2.AllowUserToAddRows = false;
+            dataGridView2.AllowUserToDeleteRows = false;
+            dataGridView2.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dataGridView1.Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right);
+
+            dataGridView2.Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom);  
+            
+            dataGridView1.AllowUserToResizeColumns = true;
+
         }
   
         private void GetData(string query)
@@ -49,7 +59,6 @@ namespace ThriftyTrak
                 dataAdapter.Fill(table);
                 bindingSource.DataSource = table;
 
-                dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception ex)
             {
@@ -272,6 +281,11 @@ namespace ThriftyTrak
 
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
+
+            // testing return item function with this button
+            ReturnItem();
+            return;
+
             myBtnSetting(btnDelete, null);
             int itemId;
 
@@ -421,9 +435,108 @@ namespace ThriftyTrak
                 "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition," +
                 "ITEM_ASKING_PRICE AS 'Asking Price', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
                 "ITEM_TIMESTAMP AS Date FROM Inventory");
+            // refresh sales in dashboard view
             if (dashBoardView)
             {
                 GetSales();
+            }
+        }
+
+        private void ReturnItem()
+        {
+            try
+            {
+                DataGridView table = dashBoardView ? dataGridView2 : dataGridView1;
+                int itemId = (int)table.SelectedRows[0].Cells[0].Value;
+                String id = "";
+                String name = (String)table.SelectedRows[0].Cells[1].Value;
+                String category = "";
+                String type = "";
+                String description = "";
+                String condition = "";
+                String asking = table.SelectedRows[0].Cells[6].Value.ToString();
+                String purchased = "";
+                String selling = "";
+
+                var confirmation = MessageBox.Show("Confirm return of " + name + " for $" + asking + "?", "Confirm Return", MessageBoxButtons.YesNo);
+                if (!(confirmation == DialogResult.Yes))
+                {
+                    return;
+                }
+
+
+                // get the selected item from sales history
+                try
+                {
+                    string query = "SELECT * FROM Sold WHERE ITEM_ID = " + itemId;
+                    SqlConnection conn = new SqlConnection(connStr);
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        id = reader["ITEM_ID"].ToString();
+
+                        // make sure to add an escape character to any 's
+                        name = reader["ITEM_NAME"].ToString().Replace("'", "''");
+                        category = reader["ITEM_CATEGORY"].ToString().Replace("'", "''");
+                        type = reader["ITEM_TYPE"].ToString().Replace("'", "''");
+                        description = reader["ITEM_DESCRIPTION"].ToString().Replace("'", "''");
+                        condition = reader["ITEM_Condition"].ToString().Replace("'", "''");
+                        selling = reader["ITEM_SELLING_PRICE"].ToString();
+                        purchased = reader["ITEM_PURCHASE_PRICE"].ToString();
+
+                        break;
+                    }
+
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                // add the selected item back to inventory
+
+                DateTime todayDate = DateTime.Now;
+                string DateNow = todayDate.ToString("yyyy-MM-dd HH:mm:ss");
+
+                try
+                {
+                    String query = "INSERT INTO Inventory VALUES('" +
+                        name + "', '" + category + "', '" + type + "', '" + description +
+                        "', '" + condition + "', " + selling + ", " + purchased + ", '" + DateNow + "' );";
+
+                    SqlConnection conn = new SqlConnection(connStr);
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+
+                    // delete from sales history
+                    query = "DELETE FROM Sold WHERE ITEM_ID = " + int.Parse(id);
+                    cmd = new SqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                // refresh inventory
+                GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
+                    "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition," +
+                    "ITEM_ASKING_PRICE AS 'Asking Price', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                    "ITEM_TIMESTAMP AS Date FROM Inventory");
+                if (dashBoardView)
+                {
+                    MessageBox.Show("GetSales()");
+                    GetSales();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
             }
         }
 
