@@ -30,7 +30,7 @@ INSERT INTO Inventory VALUES('Harmony Acoustic-Electric Guitar', 'Musical Instru
 INSERT INTO Inventory VALUES('Yamaha Electric Guitar', 'Musical Instrument', 'Guitar & Bass', 'Yamaha Pacifica electric guitar. Blue.', 'Good', 37.00, 0.00, '7/28/23');
 INSERT INTO Inventory VALUES('Fender Stratocaster Electric Guitar', 'Musical Instrument', 'Guitar & Bass', 'Fender Traditional Fat Stratocaster, rosewood neck, 39 inches. Black', 'Good', 45.00, 0.00, '5/22/23');
 
-INSERT INTO Inventory VALUES('Ernie Ball Bass Guitar', 'Musical Instrument', 'Guitar & Bass', 'Ernie Ball offical licensed product electric bass guitar. Yello with brown pickguard.', 'Good', 204.00, 0.00, '7/28/23');
+INSERT INTO Inventory VALUES('Ernie Ball Bass Guitar', 'Musical Instrument', 'Guitar & Bass', 'Ernie Ball offical licensed product electric bass guitar. Yellow with brown pickguard.', 'Good', 204.00, 0.00, '7/28/23');
 INSERT INTO Inventory VALUES('Yamaha Acoustic-Electric Guitar', 'Musical Instrument', 'Guitar & Bass', 'Yamaha APX-3A TBS Thinline acoustic-electric guitar with case. Sunburst.', 'Good', 76.00, 0.00, '7/28/23');
 INSERT INTO Inventory VALUES('Nintendo SNES', 'Gaming Systems & Games', 'Console', 'Nintendo SNES Classic edition console.', 'Good', 61.00, 0.00, '7/28/23');
 INSERT INTO Inventory VALUES('Nintendo SNES Super Scope', 'Gaming Systems & Games', 'Controller', 'Nintendo SNES Super Scope SNS-013 gun controller. Grey', 'Good', 39.99, 0.00, '12/20/22');
