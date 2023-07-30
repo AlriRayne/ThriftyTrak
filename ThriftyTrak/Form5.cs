@@ -530,7 +530,6 @@ namespace ThriftyTrak
                     "ITEM_TIMESTAMP AS Date FROM Inventory");
                 if (dashBoardView)
                 {
-                    MessageBox.Show("GetSales()");
                     GetSales();
                 }
             }
@@ -727,7 +726,7 @@ namespace ThriftyTrak
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            myBtnSetting(btnReturn, null);
+            ReturnItem();
         }
 
         //Sign Out button
