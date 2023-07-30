@@ -725,6 +725,11 @@ namespace ThriftyTrak
             return dialogResult;
         }
 
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            myBtnSetting(btnReturn, null);
+        }
+
         //Sign Out button
         private void button2_Click(object sender, EventArgs e)
         {

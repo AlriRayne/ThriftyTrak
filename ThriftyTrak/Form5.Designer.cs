@@ -49,6 +49,7 @@
             this.navPanel = new System.Windows.Forms.Panel();
             this.lblSalesTable = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.btnReturn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.navPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -172,7 +173,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(5, 634);
+            this.button2.Location = new System.Drawing.Point(5, 702);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(150, 60);
             this.button2.TabIndex = 42;
@@ -275,6 +276,7 @@
             // 
             // navPanel
             // 
+            this.navPanel.Controls.Add(this.btnReturn);
             this.navPanel.Controls.Add(this.btnDash);
             this.navPanel.Controls.Add(this.btnDonate);
             this.navPanel.Controls.Add(this.btnSales);
@@ -285,7 +287,7 @@
             this.navPanel.Controls.Add(this.btnEdit);
             this.navPanel.Location = new System.Drawing.Point(5, 105);
             this.navPanel.Name = "navPanel";
-            this.navPanel.Size = new System.Drawing.Size(150, 523);
+            this.navPanel.Size = new System.Drawing.Size(150, 591);
             this.navPanel.TabIndex = 47;
             // 
             // lblSalesTable
@@ -306,6 +308,20 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(1268, 250);
             this.dataGridView2.TabIndex = 49;
+            // 
+            // btnReturn
+            // 
+            this.btnReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(153)))));
+            this.btnReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReturn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReturn.ForeColor = System.Drawing.Color.White;
+            this.btnReturn.Location = new System.Drawing.Point(0, 528);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(150, 60);
+            this.btnReturn.TabIndex = 50;
+            this.btnReturn.Text = "Return";
+            this.btnReturn.UseVisualStyleBackColor = false;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // Form5
             // 
@@ -357,5 +373,6 @@
         private System.Windows.Forms.Panel navPanel;
         private System.Windows.Forms.Label lblSalesTable;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button btnReturn;
     }
 }
