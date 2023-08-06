@@ -96,6 +96,30 @@ namespace ThriftyTrak
             }
         }
 
+        private void QuerySales(string query)
+        {
+            dataGridView2.DataSource = null;
+
+            try
+            {
+                SqlCommand command = new SqlCommand();
+                SqlConnection conn = new SqlConnection(connStr);
+                conn.Open();
+                command.Connection = conn;
+                command.CommandText = query;
+                SqlDataAdapter da = new SqlDataAdapter(command);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dataGridView2.DataSource = dt;
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void Form5_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = bindingSource;
@@ -736,12 +760,142 @@ namespace ThriftyTrak
             myBtnSetting(btnSearch, null);
             String searchTerm = "";
             int columnSelection = 0;
+            int tableSelection = 0;
+            string table = "";
+            int itemId = 0;
+
+            if (dashBoardView)
+            {
+                if (DashboardSearchOptions(ref tableSelection) == DialogResult.OK)
+                {
+                    if (tableSelection == 1)
+                    {
+                        if (SearchDialog("Search by keyword or phrase", "Keyword/Phrase:", ref searchTerm, ref columnSelection) == DialogResult.OK)
+                        {
+                            string price = "ITEM_SELLING_PRICE";
+                            string priceDisplay = "Selling Price";
+                            table = "Sold";
+                            string tableDisplay = "sales history";
+                            string searchColumns = "all columns";
+
+                            if (!inventoryView)
+                            {
+                                price = "ITEM_SELLING_PRICE";
+                                priceDisplay = "Selling Price";
+                                table = "Sold";
+                                tableDisplay = "sales history";
+                            }
+
+                            // all-column and column-specific queries
+                            switch (columnSelection)
+                            {
+
+                                // all-column search
+                                case 0:
+                                    QuerySales("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
+                                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                                price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                                "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_ID) LIKE LOWER('%" + searchTerm +
+                                "%') OR LOWER(ITEM_NAME) LIKE LOWER('%" + searchTerm + "%') OR LOWER(ITEM_CATEGORY) LIKE LOWER('%" +
+                                searchTerm + "%') OR LOWER(ITEM_TYPE)" + "LIKE LOWER('%" + searchTerm + "%') OR LOWER(ITEM_DESCRIPTION) " +
+                                "LIKE LOWER('%" + searchTerm + "%')" + "OR LOWER(" + price + ") LIKE LOWER('%" + searchTerm + "%')" +
+                                " OR LOWER(ITEM_TIMESTAMP) LIKE LOWER('%" + searchTerm + "%')");
+                                    break;
+
+                                // id search
+                                case 1:
+                                    QuerySales("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
+                                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                                price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                                "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_ID) LIKE LOWER('%" + searchTerm + "%')");
+                                    searchColumns = "Id";
+                                    break;
+
+                                // name search
+                                case 2:
+                                    QuerySales("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
+                                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                                price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                                "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_NAME) LIKE LOWER('%" + searchTerm + "%')");
+                                    searchColumns = "Name";
+                                    break;
+
+                                // category search
+                                case 3:
+                                    QuerySales("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
+                                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                                price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                                "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_CATEGORY) LIKE LOWER('%" + searchTerm + "%')");
+                                    searchColumns = "Category";
+                                    break;
+
+                                // type search
+                                case 4:
+                                    QuerySales("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
+                                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                                price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                                "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_TYPE) LIKE LOWER('%" + searchTerm + "%')");
+                                    searchColumns = "Type";
+                                    break;
+
+                                // description search
+                                case 5:
+                                    QuerySales("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
+                                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                                price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                                "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_DESCRIPTION) LIKE LOWER('%" + searchTerm + "%')");
+                                    searchColumns = "Description";
+                                    break;
+
+                                // condition search
+                                case 6:
+                                    QuerySales("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
+                                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                                price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                                "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_CONDITION) LIKE LOWER('%" + searchTerm + "%')");
+                                    searchColumns = "Condition";
+                                    break;
+
+                                // price search
+                                case 7:
+                                    QuerySales("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
+                                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                                price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                                "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(" + price + ") LIKE LOWER('%" + searchTerm + "%')");
+                                    searchColumns = priceDisplay;
+                                    break;
+
+                                // date search
+                                case 8:
+                                    QuerySales("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
+                                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                                price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                                "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_TIMESTAMP) LIKE LOWER('%" + searchTerm + "%')");
+                                    searchColumns = "Date";
+                                    break;
+                            }
+
+                            // show error message for no results
+                            if (dataGridView2.RowCount == 0)
+                            {
+                                MessageBox.Show("No matches found for \"" + searchTerm + "\" in " + searchColumns);
+                            }
+
+                            // update tag for current table, search terms, and search columns
+                            // replace any escaped 's with single '
+                            lblSalesTable.Text = "Results for \"" + searchTerm.Replace("''", "'") + "\" in " + searchColumns + " in " + tableDisplay + ":";
+                            return;
+                        }
+                    }
+                    
+                }
+            }
 
             if (SearchDialog("Search by keyword or phrase", "Keyword/Phrase:", ref searchTerm, ref columnSelection) == DialogResult.OK)
             {
                 string price = "ITEM_ASKING_PRICE";
                 string priceDisplay = "Asking Price";
-                string table = "Inventory";
+                table = "Inventory";
                 string tableDisplay = "current inventory";
                 string searchColumns = "all columns";
 
@@ -852,6 +1006,9 @@ namespace ThriftyTrak
                 // replace any escaped 's with single '
                 tableLabel.Text = "Results for \"" + searchTerm.Replace("''", "'") + "\" in " + searchColumns + " in " + tableDisplay + ":";
             }
+            
+
+            
         }
 
         private void btnDash_Click(object sender, EventArgs e)
