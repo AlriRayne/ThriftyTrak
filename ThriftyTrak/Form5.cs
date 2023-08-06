@@ -126,7 +126,7 @@ namespace ThriftyTrak
             dataGridView1.DataSource = bindingSource;
             GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
                 "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition," +
-                "ITEM_ASKING_PRICE AS 'Purchase Price', ITEM_PURCHASE_PRICE AS 'Asking Price'," +
+                "ITEM_PURCHASE_PRICE AS 'Purchase Price', ITEM_ASKING_PRICE AS 'Asking Price'," +
                 "ITEM_TIMESTAMP AS Date FROM Inventory");
             this.ResizeEnd += new EventHandler(Form5_ResizeEnd);
 
@@ -578,7 +578,7 @@ namespace ThriftyTrak
             String type = "";
             String description = "";
             String condition = "";
-            String asking = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
+            String asking = dataGridView1.SelectedRows[0].Cells[7].Value.ToString();
             String purchased = "";
 
 
