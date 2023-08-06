@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Diagnostics.Eventing.Reader;
 
 namespace ThriftyTrak
 {
@@ -66,6 +67,7 @@ namespace ThriftyTrak
             }
         }
 
+
         //adding GetData for Sales in DGV2
         private void GetSales()
         {
@@ -99,7 +101,7 @@ namespace ThriftyTrak
             dataGridView1.DataSource = bindingSource;
             GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
                 "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition," +
-                "ITEM_ASKING_PRICE AS 'Asking Price', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                "ITEM_ASKING_PRICE AS 'Purchase Price', ITEM_PURCHASE_PRICE AS 'Asking Price'," +
                 "ITEM_TIMESTAMP AS Date FROM Inventory");
             this.ResizeEnd += new EventHandler(Form5_ResizeEnd);
 
@@ -180,14 +182,64 @@ namespace ThriftyTrak
 
         private void btnEdit_Click_1(object sender, EventArgs e)
         {
-            myBtnSetting(btnEdit, null);
-            if (dataGridView1.SelectedRows == null)
+            string table = "Sold";
+            var tableSelection = 0;
+            var itemId = 0;
+
+            if (dashBoardView)
             {
-                MessageBox.Show("Please select an item to edit");
-                return;
+                if (DashboardSearchOptions(ref tableSelection) == DialogResult.OK)
+                {
+                    if (tableSelection == 0)
+                    {
+                        table = "Inventory";
+                        itemId = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
+                        if (dataGridView1.SelectedRows == null)
+                        {
+                            MessageBox.Show("Please select an item to edit");
+                            return;
+                        }
+                    } else
+                    {
+                        table = "Sold";
+                        itemId = (int)dataGridView2.SelectedRows[0].Cells[0].Value;
+                        if (dataGridView2.SelectedRows == null)
+                        {
+                            MessageBox.Show("Please select an item to edit");
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                if (tableSelection == 0)
+                {
+                    table = "Inventory";
+                    itemId = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
+                    if (dataGridView1.SelectedRows == null)
+                    {
+                        MessageBox.Show("Please select an item to edit");
+                        return;
+                    }
+                }
+                else
+                {
+                    table = "Sold";
+                    itemId = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
+                    if (dataGridView1.SelectedRows == null)
+                    {
+                        MessageBox.Show("Please select an item to edit");
+                        return;
+                    }
+                }                  
             }
 
-            int itemId = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
+            myBtnSetting(btnEdit, null);
 
             string name = "";
             string category = "";
@@ -197,7 +249,80 @@ namespace ThriftyTrak
             string asking = "";
             string purchased = "";
 
-            string table = "Sold";
+            if (dashBoardView)
+            {
+                if (tableSelection == 0)
+                {
+                    // get the selected item from inventory
+                    try
+                    {
+                        string query = "SELECT * FROM " + table + " WHERE ITEM_ID = " + itemId;
+                        SqlConnection conn = new SqlConnection(connStr);
+                        conn.Open();
+                        SqlCommand cmd = new SqlCommand(query, conn);
+                        var reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            name = reader["ITEM_NAME"].ToString();
+                            category = reader["ITEM_CATEGORY"].ToString();
+                            type = reader["ITEM_TYPE"].ToString();
+                            description = reader["ITEM_DESCRIPTION"].ToString();
+                            condition = reader["ITEM_Condition"].ToString();
+                            asking = reader["ITEM_ASKING_PRICE"].ToString();
+                            purchased = reader["ITEM_PURCHASE_PRICE"].ToString();
+                            break;
+                        }
+
+                        conn.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    Form2 edit = new Form2(table, itemId, name, category, type, description, condition, asking, purchased, userName, password, connStr);
+                    edit.FormClosed += new FormClosedEventHandler(editInventoryClosed);
+                    edit.Show();
+                    return;
+                }
+                else
+                {
+                    string selling = "";
+
+                    // get the selected item from sales history
+                    try
+                    {
+                        string query = "SELECT * FROM Sold WHERE ITEM_ID = " + itemId;
+                        SqlConnection conn = new SqlConnection(connStr);
+                        conn.Open();
+                        SqlCommand cmd = new SqlCommand(query, conn);
+                        var reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            name = reader["ITEM_NAME"].ToString();
+                            category = reader["ITEM_CATEGORY"].ToString();
+                            type = reader["ITEM_TYPE"].ToString();
+                            description = reader["ITEM_DESCRIPTION"].ToString();
+                            condition = reader["ITEM_CONDITION"].ToString();
+                            selling = reader["ITEM_SELLING_PRICE"].ToString();
+                            purchased = reader["ITEM_PURCHASE_PRICE"].ToString();
+
+                            break;
+                        }
+
+                        conn.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    Form3 edit = new Form3("Sold", itemId, name, category, type, description, condition, selling, purchased, userName, password, connStr);
+                    edit.FormClosed += new FormClosedEventHandler(editSalesClosed);
+                    edit.Show();
+                    return;
+                }
+
+            }
+
             if (inventoryView)
             {
                 table = "Inventory";
@@ -271,47 +396,111 @@ namespace ThriftyTrak
 
         private void editInventoryClosed(object sender, FormClosedEventArgs e)
         {
-            DisplayInventory();
+            if (dashBoardView)
+            {
+                DisplayInventory();
+                inventoryView = false;
+                GetSales();
+            }
+            else
+            {
+                if (inventoryView)
+                {
+                    DisplayInventory();
+                }
+                else
+                {
+                    MessageBox.Show("full inventory view");
+                    GetSales();
+                }
+            }
         }
 
         private void editSalesClosed(object sender, FormClosedEventArgs e)
         {
-            DisplaySales();
+            if (dashBoardView)
+            {
+                DisplayInventory();
+                inventoryView = false;
+                GetSales();
+            }
+            else
+            {
+                if (inventoryView)
+                {
+                    DisplayInventory();
+                }
+                else
+                {
+                    MessageBox.Show("full sales view");
+
+                    GetSales();
+                }
+            }
         }
 
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
-
-            // testing return item function with this button
-            //ReturnItem();
-            //return;
-
             myBtnSetting(btnDelete, null);
-            int itemId;
 
-            try
+            int tableSelection = 0;
+            int itemId = 0;
+            string table = "Sold";
+            string name = "";
+
+            if (dashBoardView)
             {
-                itemId = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
+                if (DashboardSearchOptions(ref tableSelection) == DialogResult.OK)
+                {
+                    if (tableSelection == 0)
+                    {
+                        if (dataGridView1.SelectedRows == null)
+                        {
+                            MessageBox.Show("Please select an item to delete");
+                            return;
+                        }
+                        table = "Inventory";
+                        itemId = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
+                        name = (String)dataGridView1.SelectedRows[0].Cells[1].Value;
 
+                    }
+                    else
+                    {
+                        if (dataGridView2.SelectedRows == null)
+                        {
+                            MessageBox.Show("Please select an item to delete");
+                            return;
+                        }
+                        table = "Sold";
+                        itemId = (int)dataGridView2.SelectedRows[0].Cells[0].Value;
+                        name = (String)dataGridView2.SelectedRows[0].Cells[1].Value;
+                    }
+                }
+                else
+                {
+                    return;
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("No item selected for deletion");
-                return;
+                if (inventoryView)
+                {
+                    table = "Inventory";
+                    name = (String)dataGridView1.SelectedRows[0].Cells[1].Value;
+                    itemId = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
+                }
+                else
+                {
+                    name = (String)dataGridView1.SelectedRows[0].Cells[1].Value;
+                    itemId = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
+                }
             }
 
-            String name = (String)dataGridView1.SelectedRows[0].Cells[1].Value;
 
             var confirmation = MessageBox.Show("Confirm deletion of " + name + "?", "Confirm Deletion", MessageBoxButtons.YesNo);
             if (!(confirmation == DialogResult.Yes))
             {
                 return;
-            }
-
-            string table = "Sold";
-            if (inventoryView)
-            {
-                table = "Inventory";
             }
 
             // delete the selected item from appropriate table
@@ -328,19 +517,22 @@ namespace ThriftyTrak
             {
                 MessageBox.Show(ex.Message);
             }
-            if (inventoryView)
+            if (dashBoardView)
             {
-                GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
-                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition," +
-                "ITEM_ASKING_PRICE AS 'Asking Price', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
-                "ITEM_TIMESTAMP AS Date FROM Inventory");
+                DisplayInventory();
+                inventoryView = false;
+                GetSales();
             }
-            else
+            else 
             {
-                GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
-                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition," +
-                "ITEM_SELLING_PRICE AS 'Selling Price', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
-                "ITEM_TIMESTAMP AS Date FROM Sold");
+                if (inventoryView)
+                {
+                    DisplayInventory();
+                }
+                else
+                {
+                    GetSales();
+                }
             }
         }
 
@@ -671,6 +863,50 @@ namespace ThriftyTrak
             dataGridView1.Height = 250;
             DisplayInventory();
             GetSales();
+        }
+
+        public static DialogResult DashboardSearchOptions(ref int tableSelection)
+        {
+            Form searchOptions = new Form();
+            Label label = new Label();
+            Button buttonOk = new Button();
+            Button buttonCancel = new Button();
+            buttonOk.Text = "Ok";
+            buttonCancel.Text = "Cancel";
+            ComboBox tableSelectionMenu = new ComboBox();
+
+            label.Text = "Choose table:";
+
+            tableSelectionMenu.Items.AddRange(new object[] { "Inventory", "Sales History" });
+            tableSelectionMenu.SelectedIndex = 0;
+            tableSelectionMenu.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            buttonOk.DialogResult = DialogResult.OK;
+            buttonCancel.DialogResult = DialogResult.Cancel;
+
+            label.SetBounds(36, 45, 372, 13);
+            tableSelectionMenu.SetBounds(36, 75, 150, 20);
+
+            buttonOk.SetBounds(36, 160, 160, 60);
+            buttonCancel.SetBounds(111, 160, 160, 60);
+            buttonOk.Size = new Size(75, 30);
+            buttonCancel.Size = new Size(75, 30);
+
+            label.AutoSize = true;
+            searchOptions.ClientSize = new Size(225, 225);
+            searchOptions.FormBorderStyle = FormBorderStyle.FixedDialog;
+            searchOptions.StartPosition = FormStartPosition.CenterScreen;
+            searchOptions.MinimizeBox = false;
+            searchOptions.MaximizeBox = false;
+
+            searchOptions.Controls.AddRange(new Control[] { label, tableSelectionMenu, buttonOk, buttonCancel });
+            searchOptions.AcceptButton = buttonOk;
+            searchOptions.CancelButton = buttonCancel;
+
+            DialogResult dialogResult = searchOptions.ShowDialog();
+            tableSelection = tableSelectionMenu.SelectedIndex;
+
+            return dialogResult;
         }
 
         public static DialogResult SearchDialog(string title, string prompt, ref String value, ref int columnSelection)
