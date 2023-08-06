@@ -72,6 +72,7 @@ namespace ThriftyTrak
         private void GetSales()
         {
             dataGridView2.DataSource = null;
+            lblSalesTable.Text = "Sales History:";
 
             try
             {
@@ -740,6 +741,7 @@ namespace ThriftyTrak
                     MessageBox.Show(ex.Message);
                 }
                 // refresh inventory
+                tableLabel.Text = "Current Inventory:";
                 GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
                     "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition," +
                     "ITEM_ASKING_PRICE AS 'Asking Price', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
@@ -762,7 +764,6 @@ namespace ThriftyTrak
             int columnSelection = 0;
             int tableSelection = 0;
             string table = "";
-            int itemId = 0;
 
             if (dashBoardView)
             {
@@ -888,6 +889,10 @@ namespace ThriftyTrak
                         }
                     }
                     
+                }
+                else
+                {
+                    return;
                 }
             }
 
