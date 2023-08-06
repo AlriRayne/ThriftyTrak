@@ -115,7 +115,7 @@ INSERT INTO Sold VALUES(15, 'Retro 1950 Car Steering Wheel Style Cassette Boombo
 INSERT INTO Sold VALUES(16, 'Rega Planet CD Player For Parts or Repairs', 'Computers & Electronics', 'Home Electronics', 'Rega Planet CD Player only for parts or repair.', 'Parts/Repair', 0.00, 34.00, '2/19/23');
 INSERT INTO Sold VALUES(17, 'Pioneer CD Player', 'Computers & Electronics', 'Home Electronics', 'Pioneer PD-M403 multi-play CD player.', 'Fair', 0.00, 8.99, '8/20/22');
 INSERT INTO Sold VALUES(18, 'Emerson FM/AM Radio Cassette and CD Boombox', 'Computers & Electronics', 'Home Electronics', 'Emerson FM/AM Radio Cassette and CD player boombox, stereo, ADS2835. Black.', 'Fair', 0.00, 7.95, '9/19/22');
-INSERT INTO Sold VALUES(19, 'Sony 5 Disc Changer CD Player', 'Computers & Electronics', 'Home Electronics', 'Sony CDP-CE275 5 dic CD changer, tested.', 'Good', 8.95, 0.00, '2/7/22');
+INSERT INTO Sold VALUES(19, 'Sony 5 Disc Changer CD Player', 'Computers & Electronics', 'Home Electronics', 'Sony CDP-CE275 5 dic CD changer, tested.', 'Good', 0.00, 8.95, '2/7/22');
 INSERT INTO Sold VALUES(20, 'Portable CD Player for Parts or Repairs', 'Computers & Electronics', 'Home Electronics', 'White-Westinghouse portable CD player model WPDC14102 for parts or repairs.', 'Parts/Repairs', 0.00,  8.99, '3/10/23');
 
 INSERT INTO Sold VALUES(21, 'Polaroid Portable 7" DVD Player', 'Computers & Electronics', 'Personal Electronics', 'Polaroid PDM-0722 portable 7" DVD player.', 'Good', 0.00, 12.99, '7/8/23');
