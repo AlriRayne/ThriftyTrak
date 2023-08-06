@@ -81,7 +81,7 @@ namespace ThriftyTrak
                 command.Connection = conn;
                 command.CommandText = "SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
                 "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition," +
-                "ITEM_SELLING_PRICE AS 'Selling Price', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                "ITEM_PURCHASE_PRICE AS 'Purchase Price'," + "ITEM_SELLING_PRICE AS 'Selling Price', " +
                 "ITEM_TIMESTAMP AS Date FROM Sold";
                 SqlDataAdapter da = new SqlDataAdapter(command);
                 DataTable dt = new DataTable();
@@ -177,7 +177,7 @@ namespace ThriftyTrak
             tableLabel.Text = "Sales History:";
             GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
                 "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition," +
-                "ITEM_SELLING_PRICE AS 'Selling Price', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                "ITEM_PURCHASE_PRICE AS 'Purchase Price', ITEM_SELLING_PRICE AS 'Selling Price', " +
                 "ITEM_TIMESTAMP AS Date FROM Sold");
         }
 
@@ -670,7 +670,7 @@ namespace ThriftyTrak
                 String type = "";
                 String description = "";
                 String condition = "";
-                String asking = table.SelectedRows[0].Cells[6].Value.ToString();
+                String asking = table.SelectedRows[0].Cells[7].Value.ToString();
                 String purchased = "";
                 String selling = "";
 
@@ -1014,6 +1014,7 @@ namespace ThriftyTrak
         private void btnDash_Click(object sender, EventArgs e)
         {
             dashBoardView = true;
+            lblSalesTable.Text = "Sales History:";
             myBtnSetting(btnDash, null);
             dataGridView2.Visible = true;
             lblSalesTable.Visible = true;
