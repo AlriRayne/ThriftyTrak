@@ -1,0 +1,216 @@
+CREATE DATABASE ThriftyTrak;
+
+USE ThriftyTrak;
+
+CREATE TABLE Inventory (
+	ITEM_ID INTEGER NOT NULL IDENTITY(26,1) PRIMARY KEY,
+	ITEM_NAME VARCHAR(100),
+	ITEM_CATEGORY VARCHAR(50),
+	ITEM_TYPE VARCHAR(50),
+	ITEM_DESCRIPTION VARCHAR(255),
+	ITEM_CONDITION VARCHAR(50),
+	ITEM_ASKING_PRICE DECIMAL(18, 2),
+	ITEM_PURCHASE_PRICE DECIMAL(18, 2),
+	ITEM_TIMESTAMP DATE,
+)
+CREATE TABLE Sold (
+	ITEM_ID INTEGER NOT NULL PRIMARY KEY,
+	ITEM_NAME VARCHAR(255),
+	ITEM_CATEGORY VARCHAR(255),
+	ITEM_TYPE VARCHAR(255),
+	ITEM_DESCRIPTION VARCHAR(255),
+	ITEM_CONDITION VARCHAR(50),
+	ITEM_PURCHASE_PRICE DECIMAL(18, 2),
+	ITEM_SELLING_PRICE DECIMAL(18, 2),
+	ITEM_TIMESTAMP DATE
+)
+
+-- initial population of inventory and sales tables
+
+INSERT INTO Inventory VALUES('"Dancing Shoes"', 'Media', 'Book', 'Vintage 1984 7th Dell Printing of "Dancing Shoes" by Neal Stratton. Paperback book.', 'Fair', 7.50, 0.00, '10/2/2023');
+INSERT INTO Inventory VALUES('"The Great World Atlas"', 'Media', 'Book', 'Hard bound "Great World Atlas" with sleeve.', 'Good', 7.50, 0.00, '11/20/23');
+INSERT INTO Inventory VALUES('Vintage Webster''s Dictionary', 'Media', 'Book', 'Vintage leather bound 1930 "Webster''s New International Dictionary of English"', 'Fair', 9.99, 0.00, '3/10/23');
+INSERT INTO Inventory VALUES('"The Magic of Oz"', 'Media', 'Book', 'Vintage "The Magic of Oz" by L. Frank Baum. Paperback book.', 'Fair', 8.99, 0.00, '1/10/23');
+INSERT INTO Inventory VALUES('"The Shadow of a Crime"', 'Media', 'Book', 'Vintage "The Shadow of a Crime" by Hall Caine. Hard bound book.', 'Good', 5.99, 0.00, '4/14/23');
+
+INSERT INTO Inventory VALUES('Christian Dior Men''s Green Striped Dress Shirt', 'Clothing', 'Men''s Dress Shirt', 'COA Christian Dior Monsieur men''s vintage green striped dress shirt. Size 15.5', 'Good', 29.99, 0.00, '5/22/23');
+INSERT INTO Inventory VALUES('Men''s Oakley T-Shirt', 'Clothing', 'Men''s T-Shirt', 'Men''s Oakley short sleeve heathered grey t-shirt. Size L.', 'Good', 9.99, 0.00, '7/1/22');
+INSERT INTO Inventory VALUES('Men''s Pendleton Mason Plaid Flannel Shirt', 'Clothing', 'Men''s Flannel Shirt', 'Men''s Pendleton Mason plaid green/orange/grey cotton flannel shirt. Size M.', 'Good', 9.99, 0.00, '7/10/23');
+INSERT INTO Inventory VALUES('CLUB TRF Vintage T-Shirt', 'Clothing', 'Men''s T-Shirt', 'Vintage 1994 CLUB TRF t-shirt. Yellow, aqua, purple, and red. Size L.', 'Good', 9.99, 0.00, '7/10/23');
+INSERT INTO Inventory VALUES('Men''s Urban Pipeline Blue Flannel Shirt', 'Clothing', 'Men''s Flannel Shirt', 'Urban Pipeline blue flannel shirt new with tags. Size S.', 'New', 8.99, 0.00, '10/16/23');
+
+INSERT INTO Inventory VALUES('Infant''s Okie Dokie Striped Onesie', 'Clothing', 'Infant''s Onesie', 'Okie Dokie blue striped onesie, size 18m. New with tags.', 'New', 12.99, 0.00, '7/11/23');
+INSERT INTO Inventory VALUES('Baby''s Footed Pajamas', 'Clothing', 'Baby''s Pajamas', 'Carter''s pink with flowers footed pajamas, size 6m.', 'Fair', 9.99, 0.00, '7/11/23');
+INSERT INTO Inventory VALUES('Baby''s Pink Plaid Pajamas', 'Clothing', 'Baby''s Pajamas', 'Baby''s Pink Plaid Pajamas, size 3m.', 'Fair', 9.99, 0.00, '6/11/22');
+INSERT INTO Inventory VALUES('Mickey Mouse Long Sleeved Baby Shirt', 'Clothing', 'Baby''s Shirt', 'Red long sleeved Mickey Mouse baby shirt, size 4-9m.', 'Fair', 9.99, 0.00, '4/20/23');
+INSERT INTO Inventory VALUES('Baby''s Christmas Dress', 'Clothing', 'Baby''s Dress', 'Little Me "My First Christmas" red and white dress, size 12m.', 'Fair', 12.99, 0.00, '7/23/21');
+
+INSERT INTO Inventory VALUES('Baby''s Snowsuit', 'Clothing', 'Baby''s Snowsuit', 'Healthtex baby''s snowsuit, teal with colored hearts. Size 0-3m.', 'Fair', 12.99, 0.00, '10/16/23');
+INSERT INTO Inventory VALUES('Baby Girl''s Fleece Jacket', 'Clothing', 'Baby Girl''s Jacket', 'Columbia baby girl''s zip-up purple fleece jacket with pockets. Size 6-12m.', 'Fair', 9.99, 0.00, '7/11/23');
+INSERT INTO Inventory VALUES('Baby Boy''s Dinosaur T-Shirt', 'Clothing', 'Baby Boy''s T-Shirt', 'Boy''s blue t-shirt with yellow dinosaur on bike, size 3T.', 'Fair', 3.99, 0.00, '7/11/23');
+INSERT INTO Inventory VALUES('BC Rich Warlock Electric Guitar', 'Musical Instrument', 'Guitar & Bass', 'BC Rich Warlock Bronze Series. Black.', 'Good', 57.99, 0.00, '7/28/23');
+INSERT INTO Inventory VALUES('Classical Acoustic Guitar', 'Musical Instrument', 'Guitar & Bass', 'Castilla acoustic cclassical guitar with Darco string and gig bag.', 'Good', 9.99, 0.00, '7/28/23');
+
+INSERT INTO Inventory VALUES('Sakura Acoustic Guitar', 'Musical Instrument', 'Guitar & Bass', '1971 Sakura SW-63 6-string acoustic guitar made in Japan.', 'Good', 79.02, 0.00, '1/2/23');
+INSERT INTO Inventory VALUES('Johnson 3/4 Size Acoustic Guitar', 'Musical Instrument', 'Guitar & Bass', 'Johnson Player Series Dreadnaught JG-610-N 3/4 size acoustic guitar.', 'Good', 49.99, 0.00, '2/28/23');
+INSERT INTO Inventory VALUES('Harmony Acoustic-Electric Guitar', 'Musical Instrument', 'Guitar & Bass', 'Harmony Hummingbird-inspired Dreadnaught 4/4 acoustic electric guitar.', 'Good', 51.00, 0.00, '3/1/23');
+INSERT INTO Inventory VALUES('Yamaha Electric Guitar', 'Musical Instrument', 'Guitar & Bass', 'Yamaha Pacifica electric guitar. Blue.', 'Good', 37.00, 0.00, '7/28/23');
+INSERT INTO Inventory VALUES('Fender Stratocaster Electric Guitar', 'Musical Instrument', 'Guitar & Bass', 'Fender Traditional Fat Stratocaster, rosewood neck, 39 inches. Black', 'Good', 45.00, 0.00, '5/22/23');
+
+INSERT INTO Inventory VALUES('Ernie Ball Bass Guitar', 'Musical Instrument', 'Guitar & Bass', 'Ernie Ball offical licensed product electric bass guitar. Yellow with brown pickguard.', 'Good', 204.00, 0.00, '7/28/23');
+INSERT INTO Inventory VALUES('Yamaha Acoustic-Electric Guitar', 'Musical Instrument', 'Guitar & Bass', 'Yamaha APX-3A TBS Thinline acoustic-electric guitar with case. Sunburst.', 'Good', 76.00, 0.00, '7/28/23');
+INSERT INTO Inventory VALUES('Nintendo SNES', 'Gaming Systems & Games', 'Console', 'Nintendo SNES Classic edition console.', 'Good', 61.00, 0.00, '7/28/23');
+INSERT INTO Inventory VALUES('Nintendo SNES Super Scope', 'Gaming Systems & Games', 'Controller', 'Nintendo SNES Super Scope SNS-013 gun controller. Grey', 'Good', 39.99, 0.00, '12/20/22');
+INSERT INTO Inventory VALUES('Super Mario Kart for SNES', 'Gaming Systems & Games', 'Game', 'Super Mario Kart game cartridge for SNES.', 'Good', 18.99, 0.00, '7/28/23');
+
+INSERT INTO Inventory VALUES('Star Fox for SNES', 'Gaming Systems & Games', 'Game', 'Star Fox game cartridge for SNES.', 'Good', 21.00, 0.00, '7/28/23');
+INSERT INTO Inventory VALUES('Batman Returns for SNES', 'Gaming Systems & Games', 'Game', 'Batman Returns game cartridge for SNES.', 'Good', 18.99, 0.00, '7/28/23');
+INSERT INTO Inventory VALUES('Nintendo SNES', 'Gaming Systems & Games', 'Console', 'Nintendo SNES with two games and controllers.', 'Fair', 41.00, 0.00, '4/20/23');
+INSERT INTO Inventory VALUES('Lemmings for SNES', 'Gaming Systems & Games', 'Game', 'Lemmings game cartridge for SNES.', 'Good', 18.99, 0.00, '7/28/23');
+INSERT INTO Inventory VALUES('Embossed Floral Glass Bowls', 'Glassware', 'Bowls', 'Vintage set of 4 Mikasa 5 inch embossed floral ice cream or fruit glass bowls.', 'Good', 24.99, 0.00, '7/28/23');
+
+INSERT INTO Inventory VALUES('Red Coffee or Tea Cups', 'Glassware', 'Cups', 'Vintage possibly Anchor Hocking ruby red cups. Lot of 6.', 'Fair', 9.99, 0.00, '10/16/23');
+INSERT INTO Inventory VALUES('Peach Glass Serving Bowl', 'Glassware', 'Bowls', 'Glass 3-footed peach serving bowl in great condition.', 'Great', 24.99, 0.00, '7/28/23');
+INSERT INTO Inventory VALUES('Cristal D''Arques Wine Glasses', 'Glassware', 'Glasses', 'Set of 4 Cristal D''Arques wine glasses.', 'Good', 4.99, 0.00, '7/28/23');
+INSERT INTO Inventory VALUES('Yellow Amber Wine Goblets', 'Glassware', 'Glasses', 'Set of 4 yellow amber Carnival glass wine goblets.', 'Good', 11.00, 0.00, '4/7/23');
+INSERT INTO Inventory VALUES('Nikon D3000 Camera', 'Cameras & Camcorders', 'Camera', 'Nikon D3000 Camera with extra lens and case.', 'Good', 67.00, 0.00, '12/24/22');
+
+INSERT INTO Inventory VALUES('Minolta 35mm Film Camera', 'Cameras & Camcorders', 'Camera', 'Minolta XG-M 35mm SLR film camera.', 'Good', 36.00, 0.00, '10/31/22');
+INSERT INTO Inventory VALUES('Vintage Olympus 4 MP Digital Camera', 'Cameras & Camcorders', 'Camera', 'Vintage Olympus Camedia C-750 UltraZoom 4.0 Megapixel digital camera. Working condition.', 'Working', 19.99, 0.00, '10/31/21');
+INSERT INTO Inventory VALUES('RCA Autoshot Camcorder', 'Cameras & Camcorders', 'Camcorder', 'RCA CC6363 Steady Pix Autoshot camcorder with travel bag and accessories.', 'Good', 19.99, 0.00, '4/7/23');
+INSERT INTO Inventory VALUES('JVC Digital Video Camcorder', 'Cameras & Camcorders', 'Camcorder', 'JVC Digital video camcorder GR-DA30U with sliding LCD monitor and 30x optical zoom.', 'Fair', 19.99, 0.00, '4/7/23');
+INSERT INTO Inventory VALUES('Retro 1950 Car Steering Wheel Style Cassette Boombox', 'Computers & Electronics', 'Home Electronics', 'Cicena Classic Overdrive Retro 1950 car steering wheel-style cassette boombox.', 'Good', 10.99, 0.00, '1/12/23');
+
+INSERT INTO Inventory VALUES('Rega Planet CD Player For Parts or Repairs', 'Computers & Electronics', 'Home Electronics', 'Rega Planet CD Player only for parts or repair.', 'Parts/Repair', 34.00, 0.00, '2/19/23');
+INSERT INTO Inventory VALUES('Pioneer CD Player', 'Computers & Electronics', 'Home Electronics', 'Pioneer PD-M403 multi-play CD player.', 'Fair', 8.99, 0.00, '8/20/22');
+INSERT INTO Inventory VALUES('Emerson FM/AM Radio Cassette and CD Boombox', 'Computers & Electronics', 'Home Electronics', 'Emerson FM/AM Radio Cassette and CD player boombox, stereo, ADS2835. Black.', 'Fair', 7.95, 0.00, '9/19/22');
+INSERT INTO Inventory VALUES('Sony 5 Disc Changer CD Player', 'Computers & Electronics', 'Home Electronics', 'Sony CDP-CE275 5 dic CD changer, tested.', 'Good', 8.95, 0.00, '2/7/22');
+INSERT INTO Inventory VALUES('Portable CD Player for Parts or Repairs', 'Computers & Electronics', 'Home Electronics', 'White-Westinghouse portable CD player model WPDC14102 for parts or repairs.', 'Parts/Repairs', 8.99, 0.00, '3/10/23');
+
+INSERT INTO Inventory VALUES('Polaroid Portable 7" DVD Player', 'Computers & Electronics', 'Personal Electronics', 'Polaroid PDM-0722 portable 7" DVD player.', 'Good', 12.99, 0.00, '7/8/23');
+INSERT INTO Inventory VALUES('Midland Weather Alert Radio', 'Computers & Electronics', 'Personal Electronics', 'Midland weather alert radio WR-100 NOAA, tested.', 'Good',  12.99, 0.00, '3/30/23');
+INSERT INTO Inventory VALUES('Portable CD Player for Parts or Repairs', 'Computers & Electronics', 'Personal Electronics', 'White-Westinghouse portable CD player model WPDC14102 for parts or repairs.', 'Good', 8.99, 0.00, '3/10/23');
+INSERT INTO Inventory VALUES('Borg Johnson Transistor Radio', 'Computers & Electronics', 'Personal Electronics', 'Borg Johnson transistor radio model HS-912R.', 'Good', 7.99, 0.00, '3/10/23');
+INSERT INTO Inventory VALUES('Selectronics WordFinder', 'Computers & Electronics', 'Personal Electronics', 'Selectronics WordFinder HH220 electronic spelling, dictionary, and thesaurus.', 'Good', 12.99, 0.00, '3/15/22');
+
+
+INSERT INTO Sold VALUES(1, 'Star Fox for SNES', 'Gaming Systems & Games', 'Game', 'Star Fox game cartridge for SNES.', 'Good', 0.00, 21.00, '7/28/23');
+INSERT INTO Sold VALUES(2, 'Batman Returns for SNES', 'Gaming Systems & Games', 'Game', 'Batman Returns game cartridge for SNES.', 'Good', 0.00, 18.99, '7/28/23');
+INSERT INTO Sold VALUES(3, 'Nintendo SNES', 'Gaming Systems & Games', 'Console', 'Nintendo SNES with two games and controllers.', 'Fair', 0.00, 41.00, '4/20/23');
+INSERT INTO Sold VALUES(4, 'Lemmings for SNES', 'Gaming Systems & Games', 'Game', 'Lemmings game cartridge for SNES.', 'Good', 0.00, 18.99, '7/28/23');
+INSERT INTO Sold VALUES(5, 'Embossed Floral Glass Bowls', 'Glassware', 'Bowls', 'Vintage set of 4 Mikasa 5 inch embossed floral ice cream or fruit glass bowls.', 'Good', 0.00, 24.99, '7/28/23');
+
+INSERT INTO Sold VALUES(6, 'Red Coffee or Tea Cups', 'Glassware', 'Cups', 'Vintage possibly Anchor Hocking ruby red cups. Lot of 6.', 'Fair', 0.00, 9.99, '10/16/23');
+INSERT INTO Sold VALUES(7, 'Peach Glass Serving Bowl', 'Glassware', 'Bowls', 'Glass 3-footed peach serving bowl in great condition.', 'Great', 0.00, 24.99, '7/28/23');
+INSERT INTO Sold VALUES(8, 'Cristal D''Arques Wine Glasses', 'Glassware', 'Glasses', 'Set of 4 Cristal D''Arques wine glasses.', 'Good', 0.00, 4.99, '7/28/23');
+INSERT INTO Sold VALUES(9, 'Yellow Amber Wine Goblets', 'Glassware', 'Glasses', 'Set of 4 yellow amber Carnival glass wine goblets.', 'Good', 0.00, 11.00, '4/7/23');
+INSERT INTO Sold VALUES(10, 'Nikon D3000 Camera', 'Cameras & Camcorders', 'Camera', 'Nikon D3000 Camera with extra lens and case.', 'Good', 0.00, 67.00, '12/24/22');
+
+INSERT INTO Sold VALUES(11, 'Minolta 35mm Film Camera', 'Cameras & Camcorders', 'Camera', 'Minolta XG-M 35mm SLR film camera.', 'Good', 0.00, 36.00, '10/31/22');
+INSERT INTO Sold VALUES(12, 'Vintage Olympus 4 MP Digital Camera', 'Cameras & Camcorders', 'Camera', 'Vintage Olympus Camedia C-750 UltraZoom 4.0 Megapixel digital camera. Working condition.', 'Working', 0.00, 19.99, '10/31/21');
+INSERT INTO Sold VALUES(13, 'RCA Autoshot Camcorder', 'Cameras & Camcorders', 'Camcorder', 'RCA CC6363 Steady Pix Autoshot camcorder with travel bag and accessories.', 'Good', 0.00, 19.99, '4/7/23');
+INSERT INTO Sold VALUES(14, 'JVC Digital Video Camcorder', 'Cameras & Camcorders', 'Camcorder', 'JVC Digital video camcorder GR-DA30U with sliding LCD monitor and 30x optical zoom.', 'Fair', 0.00, 19.99, '4/7/23');
+INSERT INTO Sold VALUES(15, 'Retro 1950 Car Steering Wheel Style Cassette Boombox', 'Computers & Electronics', 'Home Electronics', 'Cicena Classic Overdrive Retro 1950 car steering wheel-style cassette boombox.', 'Good', 0.00, 10.99, '1/12/23');
+
+INSERT INTO Sold VALUES(16, 'Rega Planet CD Player For Parts or Repairs', 'Computers & Electronics', 'Home Electronics', 'Rega Planet CD Player only for parts or repair.', 'Parts/Repair', 0.00, 34.00, '2/19/23');
+INSERT INTO Sold VALUES(17, 'Pioneer CD Player', 'Computers & Electronics', 'Home Electronics', 'Pioneer PD-M403 multi-play CD player.', 'Fair', 0.00, 8.99, '8/20/22');
+INSERT INTO Sold VALUES(18, 'Emerson FM/AM Radio Cassette and CD Boombox', 'Computers & Electronics', 'Home Electronics', 'Emerson FM/AM Radio Cassette and CD player boombox, stereo, ADS2835. Black.', 'Fair', 0.00, 7.95, '9/19/22');
+INSERT INTO Sold VALUES(19, 'Sony 5 Disc Changer CD Player', 'Computers & Electronics', 'Home Electronics', 'Sony CDP-CE275 5 dic CD changer, tested.', 'Good', 0.00, 8.95, '2/7/22');
+INSERT INTO Sold VALUES(20, 'Portable CD Player for Parts or Repairs', 'Computers & Electronics', 'Home Electronics', 'White-Westinghouse portable CD player model WPDC14102 for parts or repairs.', 'Parts/Repairs', 0.00,  8.99, '3/10/23');
+
+INSERT INTO Sold VALUES(21, 'Polaroid Portable 7" DVD Player', 'Computers & Electronics', 'Personal Electronics', 'Polaroid PDM-0722 portable 7" DVD player.', 'Good', 0.00, 12.99, '7/8/23');
+INSERT INTO Sold VALUES(22, 'Midland Weather Alert Radio', 'Computers & Electronics', 'Personal Electronics', 'Midland weather alert radio WR-100 NOAA, tested.', 'Good',  0.00,  12.99,'3/30/23');
+INSERT INTO Sold VALUES(23, 'Portable CD Player for Parts or Repairs', 'Computers & Electronics', 'Personal Electronics', 'White-Westinghouse portable CD player model WPDC14102 for parts or repairs.', 'Good', 0.00, 8.99, '3/10/23');
+INSERT INTO Sold VALUES(24, 'Borg Johnson Transistor Radio', 'Computers & Electronics', 'Personal Electronics', 'Borg Johnson transistor radio model HS-912R.', 'Good', 0.00, 7.99, '3/10/23');
+INSERT INTO Sold VALUES(25, 'Selectronics WordFinder', 'Computers & Electronics', 'Personal Electronics', 'Selectronics WordFinder HH220 electronic spelling, dictionary, and thesaurus.', 'Good', 0.00, 12.99, '3/15/22');
+
+
+-- create roles: Employee, Manager, and Owner
+
+CREATE ROLE Employee;
+
+GRANT SELECT, INSERT, DELETE
+ON Inventory
+TO Employee;
+
+GRANT SELECT, INSERT
+ON Sold
+TO Employee;
+
+CREATE ROLE Manager;
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON Inventory
+TO Manager;
+
+GRANT SELECT, INSERT
+ON Sold
+TO Manager;
+
+CREATE ROLE Owner;
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON Inventory
+TO Owner;
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON Sold
+TO Owner;
+
+-- create logins and users
+
+CREATE LOGIN Eric
+WITH PASSWORD = '123';
+
+CREATE USER Eric
+FOR LOGIN Eric;
+
+CREATE LOGIN Mary
+WITH PASSWORD = '123';
+
+CREATE USER Mary
+FOR LOGIN Mary;
+
+CREATE LOGIN Cera
+WITH PASSWORD = '123';
+
+CREATE USER Cera
+FOR LOGIN Cera;
+
+CREATE LOGIN Bob
+WITH PASSWORD = '123';
+
+CREATE USER Bob
+FOR LOGIN Bob;
+
+CREATE LOGIN Jim
+WITH PASSWORD = '123';
+
+CREATE USER Jim
+FOR LOGIN Jim;
+
+CREATE LOGIN Jane
+WITH PASSWORD = '123';
+
+CREATE USER Jane
+FOR LOGIN Jane;
+
+-- assign roles to users
+
+ALTER ROLE Owner
+ADD MEMBER Eric;
+
+ALTER ROLE Owner
+ADD MEMBER Mary;
+
+ALTER ROLE Owner
+ADD MEMBER Cera;
+
+ALTER ROLE Owner
+ADD MEMBER Bob;
+
+ALTER ROLE Employee
+ADD MEMBER Jim;
+
+ALTER ROLE Manager
+ADD MEMBER Jane;
