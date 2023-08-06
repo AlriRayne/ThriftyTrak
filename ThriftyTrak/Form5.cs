@@ -563,7 +563,7 @@ namespace ThriftyTrak
         private void btnSell_Click(object sender, EventArgs e)
         {
             myBtnSetting(btnSell, null);
-            if (!inventoryView || dataGridView1.SelectedRows == null)
+            if ((!inventoryView && !dashBoardView) || dataGridView1.SelectedRows == null)
             {
                 MessageBox.Show("Please select an item to sell from current inventory");
                 return;
