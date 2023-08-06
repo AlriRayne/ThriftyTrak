@@ -578,7 +578,7 @@ namespace ThriftyTrak
             String type = "";
             String description = "";
             String condition = "";
-            String asking = dataGridView1.SelectedRows[0].Cells[7].Value.ToString();
+            String asking = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
             String purchased = "";
 
 
@@ -795,7 +795,7 @@ namespace ThriftyTrak
                                 case 0:
                                     QuerySales("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
                                 "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
-                                price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
+                                "ITEM_PURCHASE_PRICE AS 'Purchase Price', " + price + " AS '" + priceDisplay + "', " +
                                 "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_ID) LIKE LOWER('%" + searchTerm +
                                 "%') OR LOWER(ITEM_NAME) LIKE LOWER('%" + searchTerm + "%') OR LOWER(ITEM_CATEGORY) LIKE LOWER('%" +
                                 searchTerm + "%') OR LOWER(ITEM_TYPE)" + "LIKE LOWER('%" + searchTerm + "%') OR LOWER(ITEM_DESCRIPTION) " +
@@ -806,72 +806,72 @@ namespace ThriftyTrak
                                 // id search
                                 case 1:
                                     QuerySales("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
-                                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
-                                price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
-                                "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_ID) LIKE LOWER('%" + searchTerm + "%')");
+                                 "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                                 "ITEM_PURCHASE_PRICE AS 'Purchase Price', " + price + " AS '" + priceDisplay + "', " +
+                                 "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_ID) LIKE LOWER('%" + searchTerm + "%')");
                                     searchColumns = "Id";
                                     break;
 
                                 // name search
                                 case 2:
                                     QuerySales("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
-                                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
-                                price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
-                                "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_NAME) LIKE LOWER('%" + searchTerm + "%')");
+                                 "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                                 "ITEM_PURCHASE_PRICE AS 'Purchase Price', " + price + " AS '" + priceDisplay + "', " +
+                                 "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_NAME) LIKE LOWER('%" + searchTerm + "%')");
                                     searchColumns = "Name";
                                     break;
 
                                 // category search
                                 case 3:
                                     QuerySales("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
-                                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
-                                price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
-                                "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_CATEGORY) LIKE LOWER('%" + searchTerm + "%')");
+                                 "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                                 "ITEM_PURCHASE_PRICE AS 'Purchase Price', " + price + " AS '" + priceDisplay + "', " +
+                                 "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_CATEGORY) LIKE LOWER('%" + searchTerm + "%')");
                                     searchColumns = "Category";
                                     break;
 
                                 // type search
                                 case 4:
                                     QuerySales("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
-                                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
-                                price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
-                                "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_TYPE) LIKE LOWER('%" + searchTerm + "%')");
+                                 "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                                 "ITEM_PURCHASE_PRICE AS 'Purchase Price', " + price + " AS '" + priceDisplay + "', " +
+                                 "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_TYPE) LIKE LOWER('%" + searchTerm + "%')");
                                     searchColumns = "Type";
                                     break;
 
                                 // description search
                                 case 5:
                                     QuerySales("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
-                                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
-                                price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
-                                "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_DESCRIPTION) LIKE LOWER('%" + searchTerm + "%')");
+                                 "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                                 "ITEM_PURCHASE_PRICE AS 'Purchase Price', " + price + " AS '" + priceDisplay + "', " +
+                                 "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_DESCRIPTION) LIKE LOWER('%" + searchTerm + "%')");
                                     searchColumns = "Description";
                                     break;
 
                                 // condition search
                                 case 6:
                                     QuerySales("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
-                                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
-                                price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
-                                "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_CONDITION) LIKE LOWER('%" + searchTerm + "%')");
+                                 "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                                 "ITEM_PURCHASE_PRICE AS 'Purchase Price', " + price + " AS '" + priceDisplay + "', " +
+                                 "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_CONDITION) LIKE LOWER('%" + searchTerm + "%')");
                                     searchColumns = "Condition";
                                     break;
 
                                 // price search
                                 case 7:
                                     QuerySales("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
-                                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
-                                price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
-                                "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(" + price + ") LIKE LOWER('%" + searchTerm + "%')");
+                                 "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                                 "ITEM_PURCHASE_PRICE AS 'Purchase Price', " + price + " AS '" + priceDisplay + "', " +
+                                 "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(" + price + ") LIKE LOWER('%" + searchTerm + "%')");
                                     searchColumns = priceDisplay;
                                     break;
 
                                 // date search
                                 case 8:
                                     QuerySales("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
-                                "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
-                                price + " AS '" + priceDisplay + "', ITEM_PURCHASE_PRICE AS 'Purchase Price'," +
-                                "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_TIMESTAMP) LIKE LOWER('%" + searchTerm + "%')");
+                                 "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition, " +
+                                 "ITEM_PURCHASE_PRICE AS 'Purchase Price', " + price + " AS '" + priceDisplay + "', " +
+                                 "ITEM_TIMESTAMP AS Date FROM " + table + " WHERE LOWER(ITEM_TIMESTAMP) LIKE LOWER('%" + searchTerm + "%')");
                                     searchColumns = "Date";
                                     break;
                             }
