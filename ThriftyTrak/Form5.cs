@@ -726,6 +726,7 @@ namespace ThriftyTrak
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
+            myBtnSetting(btnReturn, null);
             ReturnItem();
         }
 
