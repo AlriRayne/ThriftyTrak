@@ -66,7 +66,7 @@ namespace ThriftyTrak
 
                 String insert = "INSERT INTO Inventory VALUES('" +
                     name + "', '" + category + "', '" + type + "', '" + description +
-                    "', '" + condition + "', " + askingPrice + ", " + purchasePrice + ", '" + DateNow + "' );";
+                    "', '" + condition + "', " +  askingPrice + ", " + purchasePrice + ", '" + DateNow + "' );";
                 SqlConnection conn = new SqlConnection(connStr);
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(insert, conn);

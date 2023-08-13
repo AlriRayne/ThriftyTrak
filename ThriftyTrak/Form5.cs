@@ -304,7 +304,7 @@ namespace ThriftyTrak
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    Form2 edit = new Form2(table, itemId, name, category, type, description, condition, asking, purchased, userName, password, connStr);
+                    Form2 edit = new Form2(table, itemId, name, category, type, description, condition, purchased, asking, userName, password, connStr);
                     edit.FormClosed += new FormClosedEventHandler(editInventoryClosed);
                     edit.Show();
                     return;
@@ -340,7 +340,7 @@ namespace ThriftyTrak
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    Form3 edit = new Form3("Sold", itemId, name, category, type, description, condition, selling, purchased, userName, password, connStr);
+                    Form3 edit = new Form3("Sold", itemId, name, category, type, description, condition, purchased, selling, userName, password, connStr);
                     edit.FormClosed += new FormClosedEventHandler(editSalesClosed);
                     edit.Show();
                     return;
@@ -378,7 +378,7 @@ namespace ThriftyTrak
                 {
                     MessageBox.Show(ex.Message);
                 }
-                Form2 edit = new Form2(table, itemId, name, category, type, description, condition, asking, purchased, userName, password, connStr);
+                Form2 edit = new Form2(table, itemId, name, category, type, description, condition, purchased, asking, userName, password, connStr);
                 edit.FormClosed += new FormClosedEventHandler(editInventoryClosed);
                 edit.Show();
             }
@@ -647,6 +647,7 @@ namespace ThriftyTrak
             {
                 MessageBox.Show(ex.Message);
             }
+            tableLabel.Text = "Current Inventory:";
             // refresh inventory
             GetData("SELECT ITEM_ID AS Id, ITEM_NAME AS Name, ITEM_CATEGORY AS Category," +
                 "ITEM_TYPE AS Type, ITEM_DESCRIPTION AS Description, ITEM_CONDITION AS Condition," +
@@ -722,7 +723,7 @@ namespace ThriftyTrak
                 {
                     String query = "INSERT INTO Inventory VALUES('" +
                         name + "', '" + category + "', '" + type + "', '" + description +
-                        "', '" + condition + "', " + selling + ", " + purchased + ", '" + DateNow + "' );";
+                        "', '" + condition + "', " + purchased + ", " + selling + ", '" + DateNow + "' );";
 
                     SqlConnection conn = new SqlConnection(connStr);
                     conn.Open();

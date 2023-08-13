@@ -58,7 +58,7 @@ namespace ThriftyTrak
                 try
                 {
                     conn.Open();
-                    Form5 dashboard = new Form5(userName, password, connString);
+                    Form5 dashboard = new Form5(userName, password, connStr);
                     this.Hide();
                     dashboard.ShowDialog();
                     this.Close();
